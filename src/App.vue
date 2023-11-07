@@ -2,8 +2,8 @@
  * @Author: yosong
  * @Date: 2023-11-07 14:08:36
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-07 14:16:52
- * @FilePath: \yo-admin\src\App.vue
+ * @LastEditTime: 2023-11-07 15:09:01
+ * @FilePath: \yo-vue-admin\src\App.vue
 -->
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
