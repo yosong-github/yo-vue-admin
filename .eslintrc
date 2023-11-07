@@ -1,0 +1,22 @@
+{
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser", // 指定ts的预设
+    "ecmaVersion": "latest", // 允许解析现代ECMAScript特性
+    "sourceType": "module", // 允许使用导入
+    "ecmaFeatures": {
+      // 允许解析JSX
+      "jsx": true
+    }
+  },
+  "extends": [
+    "plugin:vue/vue3-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off", // 允许使用any
+    "vue/multi-word-component-names": "off", // 关闭组件驼峰命名规则
+    "vue/v-on-event-hyphenation": "off" // 关闭件名使用连字符的要求
+  }
+}
