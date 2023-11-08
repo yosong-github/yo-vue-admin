@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-08 16:22:10
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-08 17:15:38
+ * @LastEditTime: 2023-11-08 17:37:45
  * @FilePath: \yo-vue-admin\src\views\text.vue
 -->
 <template>
