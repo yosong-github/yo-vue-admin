@@ -1,92 +1,52 @@
 <!--
  * @Author: yosong
- * @Date: 2023-11-07 14:08:36
+ * @Date: 2023-11-07 14:48:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-07 15:09:01
+ * @LastEditTime: 2023-11-08 17:14:37
  * @FilePath: \yo-vue-admin\src\App.vue
 -->
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <el-config-provider :locale="locale" :size="assemblySize" :button="buttonConfig">
+    <router-view></router-view>
+  </el-config-provider>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script setup lang="ts">
+import { reactive, onMounted, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useGlobalStore } from '@/stores/modules/global'
+import { getBrowserLang } from '@/utils/index'
+import { storeToRefs } from 'pinia'
+import { ElConfigProvider } from 'element-plus'
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+// ElementPlus 语言模式
+import en from 'element-plus/es/locale/lang/en'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import { watchEffect } from 'vue'
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
+// 全局状态
+const globalConfig = storeToRefs(useGlobalStore())
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
+// 初始化语言
+const i18n = useI18n()
+onMounted(() => {
+  const language = globalConfig.language.value ?? getBrowserLang()
+  globalConfig.language.value = language
+})
+watchEffect(() => {
+  i18n.locale.value = globalConfig.language.value
+})
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
+// ElementPlus组件语言
+const locale = computed(() => {
+  if (globalConfig.language.value == 'zh') return zhCn
+  if (globalConfig.language.value == 'en') return en
+  return getBrowserLang() == 'zh' ? zhCn : en
+})
+// ElementPlus组件大小
+const assemblySize = computed(() => globalConfig.assemblySize.value)
+// ElementPlus按钮样式(两边是否需要空格)
+const buttonConfig = reactive({ autoInsertSpace: false })
+</script>
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
+<style lang="scss" scoped></style>
