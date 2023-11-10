@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 10:25:53
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-10 14:40:58
+ * @LastEditTime: 2023-11-10 15:04:18
  * @FilePath: \yo-vue-admin\src\stores\modules\user.ts
  */
 import { defineStore } from 'pinia'
@@ -36,37 +36,37 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
         },
         {
           path: '/menu',
-          name: 'menu',
+          name: 'Menu',
           redirect: '/menu/menu1',
           meta: { icon: 'List', title: '菜单嵌套', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: true },
           children: [
             {
               path: '/menu/menu1',
-              name: 'menu1',
+              name: 'Menu1',
               component: '/menu/menu1/index',
               meta: { icon: 'Menu', title: '菜单1', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: true }
             },
             {
               path: '/menu/menu2',
-              name: 'menu2',
+              name: 'Menu2',
               redirect: '/menu/menu2/menu21',
               meta: { icon: 'Menu', title: '菜单2', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: true },
               children: [
                 {
                   path: '/menu/menu2/menu21',
-                  name: 'menu21',
+                  name: 'Menu21',
                   component: '/menu/menu2/menu21/index',
                   meta: { icon: 'Menu', title: '菜单2-1', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: true }
                 },
                 {
                   path: '/menu/menu2/menu22',
-                  name: 'menu22',
+                  name: 'Menu22',
                   redirect: '/menu/menu2/menu22/menu221',
                   meta: { icon: 'Menu', title: '菜单2-2', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: true },
                   children: [
                     {
                       path: '/menu/menu2/menu22/menu221',
-                      name: 'menu221',
+                      name: 'Menu221',
                       component: '/menu/menu2/menu22/menu221/index',
                       meta: {
                         icon: 'Menu',
@@ -80,7 +80,7 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
                     },
                     {
                       path: '/menu/menu2/menu22/menu222',
-                      name: 'menu222',
+                      name: 'Menu222',
                       component: '/menu/menu2/menu22/menu222/index',
                       meta: {
                         icon: 'Menu',
@@ -96,7 +96,7 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
                 },
                 {
                   path: '/menu/menu2/menu23',
-                  name: 'menu23',
+                  name: 'Menu23',
                   component: '/menu/menu2/menu23/index',
                   meta: { icon: 'Menu', title: '菜单2-3', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: false }
                 }
@@ -104,7 +104,7 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
             },
             {
               path: '/menu/menu3',
-              name: 'menu3',
+              name: 'Menu3',
               component: '/menu/menu3/index',
               meta: { icon: 'Menu', title: '菜单3', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: false }
             }
