@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 13:47:36
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-10 14:48:04
+ * @LastEditTime: 2023-11-10 14:57:26
  * @FilePath: \yo-vue-admin\src\views\menu\menu3\index.vue
 -->
 <template>
