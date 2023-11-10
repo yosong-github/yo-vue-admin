@@ -1,4 +1,11 @@
-import { storeToRefs } from 'pinia'
+/*
+ * @Author: yosong
+ * @Date: 2023-11-08 17:10:43
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2023-11-10 13:38:55
+ * @FilePath: \yo-vue-admin\src\utils\index.ts
+ */
+import type { menuList } from '@/stores/interface'
 
 /**
  * @description 获取localStorage
@@ -42,45 +49,6 @@ export function localClear() {
 }
 
 /**
- * @description 生成唯一 uuid
- * @returns {String}
- */
-export function generateUUID() {
-  let uuid = ''
-  for (let i = 0; i < 32; i++) {
-    const random = (Math.random() * 16) | 0
-    if (i === 8 || i === 12 || i === 16 || i === 20) uuid += '-'
-    uuid += (i === 12 ? 4 : i === 16 ? (random & 3) | 8 : random).toString(16)
-  }
-  return uuid
-}
-
-/**
- * 判断两个对象是否相同
- * @param {Object} a 要比较的对象一
- * @param {Object} b 要比较的对象二
- * @returns {Boolean} 相同返回 true，反之 false
- */
-export function isObjectValueEqual(a: { [key: string]: any }, b: { [key: string]: any }) {
-  if (!a || !b) return false
-  const aProps = Object.getOwnPropertyNames(a)
-  const bProps = Object.getOwnPropertyNames(b)
-  if (aProps.length != bProps.length) return false
-  for (let i = 0; i < aProps.length; i++) {
-    const propName = aProps[i]
-    const propA = a[propName]
-    const propB = b[propName]
-    if (!b.hasOwnProperty(propName)) return false
-    if (propA instanceof Object) {
-      if (!isObjectValueEqual(propA, propB)) return false
-    } else if (propA !== propB) {
-      return false
-    }
-  }
-  return true
-}
-
-/**
  * @description 生成随机数
  * @param {Number} min 最小值
  * @param {Number} max 最大值
@@ -120,6 +88,12 @@ export function getBrowserLang() {
   return defaultBrowserLang
 }
 
-export function storeToRefsEnv(store: any) {
-  return storeToRefs(store())
+/**
+ * @description 使用递归扁平化菜单，方便添加动态路由
+ * @param {Array} menuList 菜单列表
+ * @returns {Array}
+ */
+export function getFlatMenuList(menuList: menuList[]): menuList[] {
+  const newMenuList: menuList[] = JSON.parse(JSON.stringify(menuList))
+  return newMenuList.flatMap(item => [item, ...(item.children ? getFlatMenuList(item.children) : [])])
 }

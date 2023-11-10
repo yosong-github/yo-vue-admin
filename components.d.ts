@@ -7,8 +7,12 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    403: (typeof import('./src/components/ErrorPage/403.vue'))['default']
+    404: (typeof import('./src/components/ErrorPage/404.vue'))['default']
+    500: (typeof import('./src/components/ErrorPage/500.vue'))['default']
     ElButton: (typeof import('element-plus/es'))['ElButton']
     ElDatePicker: (typeof import('element-plus/es'))['ElDatePicker']
+    ElInput: (typeof import('element-plus/es'))['ElInput']
     RouterLink: (typeof import('vue-router'))['RouterLink']
     RouterView: (typeof import('vue-router'))['RouterView']
   }

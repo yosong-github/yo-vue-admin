@@ -2,15 +2,15 @@
  * @Author: yosong
  * @Date: 2023-11-08 16:22:10
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-08 17:37:45
- * @FilePath: \yo-vue-admin\src\views\text.vue
+ * @LastEditTime: 2023-11-10 11:47:05
+ * @FilePath: \yo-vue-admin\src\views\cs\index.vue
 -->
 <template>
   <div class="box">
     {{ $t('home.welcome') }}
     <el-button @click="changeLanguage">切换语言</el-button>
     <el-button @click="changeSize">切换按钮大小</el-button>
-
+    <el-button @click="go">去仪表盘</el-button>
     <el-date-picker v-model="value1" type="date" placeholder="Pick a day" />
   </div>
 </template>
@@ -20,6 +20,13 @@ import { ref } from 'vue'
 import { useGlobalStore } from '@/stores/modules/global'
 
 import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const go = () => {
+  router.push('/dashboard')
+}
 
 // 全局状态
 const globalConfig = storeToRefs(useGlobalStore())
