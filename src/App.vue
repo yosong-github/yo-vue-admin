@@ -18,11 +18,15 @@ import { useGlobalStore } from '@/stores/modules/global'
 import { getBrowserLang } from '@/utils/index'
 import { storeToRefs } from 'pinia'
 import { ElConfigProvider } from 'element-plus'
+import { useSetStyle } from '@/hooks/useElementStyle'
 
 // ElementPlus 语言模式
 import en from 'element-plus/es/locale/lang/en'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import { watchEffect } from 'vue'
+
+// 修改element样式
+useSetStyle()
 
 // 全局状态
 const globalConfig = storeToRefs(useGlobalStore())

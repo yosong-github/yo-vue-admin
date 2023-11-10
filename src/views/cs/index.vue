@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-08 16:22:10
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-10 11:47:05
+ * @LastEditTime: 2023-11-10 17:08:19
  * @FilePath: \yo-vue-admin\src\views\cs\index.vue
 -->
 <template>
@@ -54,7 +54,7 @@ const changeSize = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
 </style>

@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-07 14:48:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-08 17:46:02
+ * @LastEditTime: 2023-11-10 17:23:24
  * @FilePath: \yo-vue-admin\src\main.ts
  */
 import { createApp } from 'vue'
@@ -11,6 +11,7 @@ import App from './App.vue'
 // 样式
 import 'normalize.css'
 import 'element-plus/dist/index.css'
+import './styles/common.scss' // 公共样式
 
 // 组件库
 // import ElementPlus from 'element-plus'

@@ -2,14 +2,14 @@
  * @Author: yosong
  * @Date: 2023-11-10 10:25:53
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-10 15:04:18
+ * @LastEditTime: 2023-11-10 17:46:32
  * @FilePath: \yo-vue-admin\src\stores\modules\user.ts
  */
 import { defineStore } from 'pinia'
 import piniaPersistConfig from '@/stores/helper/persist'
 import { ref } from 'vue'
 import type { menuList } from '../interface/index'
-import { getFlatMenuList } from '@/utils'
+import { getFlatMenuList, getShowMenuList } from '@/utils'
 
 const getAuthMenuListApi = (): Promise<menuList[]> => {
   return new Promise(resolve => {
@@ -21,8 +21,7 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
           component: '/dashboard/index',
           meta: {
             title: '仪表盘',
-            icon: 'el-icon-s-data',
-            isFull: true
+            icon: 'el-icon-s-data'
           }
         },
         {
@@ -151,7 +150,9 @@ export const useUserStore = defineStore(
       })
     }
 
-    return { userInfo, authMenuList, resetUser, getAuthMenuList, getAuthmenuListForRoute }
+    const getMenuList = () => getShowMenuList(authMenuList.value)
+
+    return { userInfo, authMenuList, resetUser, getAuthMenuList, getAuthmenuListForRoute, getMenuList }
   },
   {
     persist: piniaPersistConfig('user', ['userInfo']) // 排除用户路由的持久化，做到刷新路由重置
