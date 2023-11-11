@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
+    "@vueuse/core": "^10.6.0",
     "element-plus": "^2.4.2",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",

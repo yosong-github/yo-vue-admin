@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-08 16:22:10
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-10 17:08:19
+ * @LastEditTime: 2023-11-11 13:05:12
  * @FilePath: \yo-vue-admin\src\views\cs\index.vue
 -->
 <template>
@@ -12,6 +12,16 @@
     <el-button @click="changeSize">切换按钮大小</el-button>
     <el-button @click="go">去仪表盘</el-button>
     <el-date-picker v-model="value1" type="date" placeholder="Pick a day" />
+    <el-time-picker v-model="value2" is-range range-separator="To" start-placeholder="Start time" end-placeholder="End time" />
+    <el-date-picker
+      v-model="value2"
+      type="datetimerange"
+      start-placeholder="Start date"
+      end-placeholder="End date"
+      format="YYYY-MM-DD HH:mm:ss"
+      date-format="YYYY/MM/DD ddd"
+      time-format="A hh:mm:ss"
+    />
   </div>
 </template>
 
@@ -21,6 +31,8 @@ import { useGlobalStore } from '@/stores/modules/global'
 
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
+
+const value2 = ref<[Date, Date]>([new Date(2016, 9, 10, 8, 40), new Date(2016, 9, 10, 9, 40)])
 
 const router = useRouter()
 
@@ -56,5 +68,6 @@ const changeSize = () => {
   align-items: center;
   height: 100%;
   width: 100%;
+  background-color: var(--el-bg-color-page);
 }
 </style>

@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-08 17:10:43
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-10 13:38:55
+ * @LastEditTime: 2023-11-11 20:16:26
  * @FilePath: \yo-vue-admin\src\utils\index.ts
  */
 import type { menuList } from '@/stores/interface'

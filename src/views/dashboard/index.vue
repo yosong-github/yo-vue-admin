@@ -2,11 +2,11 @@
  * @Author: yosong
  * @Date: 2023-11-10 11:35:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-10 13:50:51
+ * @LastEditTime: 2023-11-11 01:10:18
  * @FilePath: \yo-vue-admin\src\views\dashboard\index.vue
 -->
 <template>
-  <div class="box">
+  <div class="dashboard">
     dashboard
 
     <el-button @click="$router.push('/test')">去测试页面</el-button>
@@ -21,4 +21,15 @@
 
 <script setup lang="ts"></script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.dashboard {
+  width: calc(100% - 30px - 2px);
+  height: calc(100% - 30px - 2px);
+  background-color: #fff;
+  padding: 15px;
+  background-color: var(--common-bg-color);
+  border: 1px solid var(--common-border-color);
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+}
+</style>

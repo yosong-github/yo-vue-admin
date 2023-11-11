@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 10:25:53
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-10 17:46:32
+ * @LastEditTime: 2023-11-11 19:37:54
  * @FilePath: \yo-vue-admin\src\stores\modules\user.ts
  */
 import { defineStore } from 'pinia'
@@ -21,7 +21,7 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
           component: '/dashboard/index',
           meta: {
             title: '仪表盘',
-            icon: 'el-icon-s-data'
+            icon: 'Odometer'
           }
         },
         {
@@ -30,7 +30,7 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
           component: '/cs/index',
           meta: {
             title: '测试',
-            icon: 'el-icon-s-data'
+            icon: 'Sugar'
           }
         },
         {

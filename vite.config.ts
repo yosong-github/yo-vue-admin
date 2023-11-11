@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-07 14:48:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-08 14:19:51
+ * @LastEditTime: 2023-11-11 13:10:37
  * @FilePath: \yo-vue-admin\vite.config.ts
  */
 import { fileURLToPath, URL } from 'node:url'
@@ -17,6 +17,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
   plugins: [
     vue(),
     vueJsx(),

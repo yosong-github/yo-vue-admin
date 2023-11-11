@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 11:02:17
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-10 14:07:17
+ * @LastEditTime: 2023-11-11 00:50:53
  * @FilePath: \yo-vue-admin\src\router\modules\dynamicRouter.ts
  */
 import router from '..'
@@ -39,8 +39,6 @@ export const initDynamicRouter = async () => {
     }
     // 3.添加动态路由
     getAuthmenuListForRoute().forEach(item => {
-      console.log(item)
-
       if (item.component && typeof item.component == 'string') {
         if (item.meta.isKeepAlive) {
           addCache(item.name)
