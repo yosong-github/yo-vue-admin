@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-08 16:22:10
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-11 13:05:12
+ * @LastEditTime: 2023-11-11 20:43:04
  * @FilePath: \yo-vue-admin\src\views\cs\index.vue
 -->
 <template>
@@ -22,6 +22,7 @@
       date-format="YYYY/MM/DD ddd"
       time-format="A hh:mm:ss"
     />
+    <div style="width: 100000px; background-color: red">111</div>
   </div>
 </template>
 
@@ -63,11 +64,9 @@ const changeSize = () => {
 
 <style lang="scss" scoped>
 .box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100%;
   width: 100%;
+  overflow-x: scroll;
   background-color: var(--el-bg-color-page);
 }
 </style>
