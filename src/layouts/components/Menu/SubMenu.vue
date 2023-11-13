@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 22:38:02
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-10 23:55:40
+ * @LastEditTime: 2023-11-13 10:14:37
  * @FilePath: \yo-vue-admin\src\layouts\components\Menu\SubMenu.vue
 -->
 <template>
@@ -13,6 +13,7 @@
           <component :is="subItem.meta.icon"></component>
         </el-icon>
         <span class="title">{{ subItem.meta.title }}</span>
+        <!-- <span class="title">{{ $t(subItem.meta.title) }}</span> -->
       </template>
       <SubMenu :menu-list="subItem.children" />
     </el-sub-menu>
@@ -22,6 +23,7 @@
       </el-icon>
       <template #title>
         <span class="title">{{ subItem.meta.title }}</span>
+        <!-- <span class="title">{{ $t(subItem.meta.title) }}</span> -->
       </template>
     </el-menu-item>
   </template>

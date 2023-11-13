@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 11:02:17
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-11 00:50:53
+ * @LastEditTime: 2023-11-13 14:37:32
  * @FilePath: \yo-vue-admin\src\router\modules\dynamicRouter.ts
  */
 import router from '..'

@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-08 15:20:35
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-11 18:24:53
+ * @LastEditTime: 2023-11-13 16:33:32
  * @FilePath: \yo-vue-admin\src\stores\modules\global.ts
  */
 import { defineStore } from 'pinia'
@@ -17,7 +17,7 @@ export const useGlobalStore = defineStore(
     // 按钮大小
     const assemblySize = ref<'large' | 'default' | 'small'>(import.meta.env.VITE_DEFAULT_SIZE)
     // 主题颜色
-    const theme = ref<'light' | 'dark'>('dark')
+    const theme = ref<'light' | 'dark'>('light')
     // 菜单是否折叠
     const isCollapse = ref(false)
 
@@ -26,7 +26,13 @@ export const useGlobalStore = defineStore(
       theme.value = theme.value === 'dark' ? 'light' : 'dark'
     }
 
-    return { language, assemblySize, theme, setTheme, isCollapse }
+    // 切换语言
+    const changeLanguage = (setlanguage: string) => {
+      if (language.value == setlanguage) return
+      language.value = setlanguage
+    }
+
+    return { language, assemblySize, theme, setTheme, isCollapse, changeLanguage }
   },
   {
     persist: piniaPersistConfig('global')

@@ -1,16 +1,25 @@
+<!--
+ * @Author: yosong
+ * @Date: 2023-11-13 10:00:26
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2023-11-13 10:34:56
+ * @FilePath: \yo-vue-admin\src\layouts\components\HeaderLeft\cpns\breadcrumb.vue
+-->
 <template>
-  <el-breadcrumb :separator-icon="ArrowRight">
-    <template v-for="it in list" :key="it.path">
-      <el-breadcrumb-item :to="{ path: it.redirect ?? it.path }">
-        <div>
-          <el-icon>
-            <component :is="it.meta.icon"></component>
-          </el-icon>
-          <span>{{ it.meta.title }}</span>
-        </div>
-      </el-breadcrumb-item>
-    </template>
-  </el-breadcrumb>
+  <div class="breadcrumbBox">
+    <el-breadcrumb :separator-icon="ArrowRight">
+      <template v-for="it in list" :key="it.path">
+        <el-breadcrumb-item :to="{ path: it.redirect ?? it.path }">
+          <div>
+            <el-icon>
+              <component :is="it.meta.icon"></component>
+            </el-icon>
+            <span>{{ it.meta.title }}</span>
+          </div>
+        </el-breadcrumb-item>
+      </template>
+    </el-breadcrumb>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -45,12 +54,20 @@ watchEffect(() => {
 </script>
 
 <style lang="scss" scoped>
-.el-breadcrumb {
-  div {
+.breadcrumbBox {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-right: 50px;
+  mask-image: linear-gradient(90deg, #000000 0%, #000000 calc(100% - 50px), transparent);
+  .el-breadcrumb {
     display: flex;
-    align-items: center;
-    span {
-      margin-left: 5px;
+    div {
+      display: flex;
+      align-items: center;
+      span {
+        margin-left: 5px;
+      }
     }
   }
 }

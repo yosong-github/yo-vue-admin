@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 10:25:53
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-11 19:37:54
+ * @LastEditTime: 2023-11-13 10:14:59
  * @FilePath: \yo-vue-admin\src\stores\modules\user.ts
  */
 import { defineStore } from 'pinia'
@@ -20,7 +20,8 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
           name: 'dashboard',
           component: '/dashboard/index',
           meta: {
-            title: '仪表盘',
+            title: '首页',
+            // title: 'layout.sider.dashboard',
             icon: 'Odometer'
           }
         },

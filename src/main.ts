@@ -1,8 +1,8 @@
 /*
  * @Author: yosong
- * @Date: 2023-11-07 14:48:15
+ * @Date: 2023-11-13 10:00:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-11 00:25:22
+ * @LastEditTime: 2023-11-13 15:05:08
  * @FilePath: \yo-vue-admin\src\main.ts
  */
 import { createApp } from 'vue'
@@ -17,6 +17,7 @@ import './styles/common.scss' // 公共样式
 // 组件库
 // import ElementPlus from 'element-plus'
 import * as Icons from '@element-plus/icons-vue'
+import { install } from '@/components/icons'
 
 // 工具包
 import router from './router'
@@ -33,6 +34,8 @@ app.config.errorHandler = errorHandler
 Object.keys(Icons).forEach(key => {
   app.component(key, Icons[key as keyof typeof Icons])
 })
+// 注册自定义图标
+install(app)
 
 // 全部导入样式组件
 // app.use(ElementPlus)
