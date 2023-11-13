@@ -10,7 +10,6 @@ declare module 'vue' {
     403: (typeof import('./src/components/ErrorPage/403.vue'))['default']
     404: (typeof import('./src/components/ErrorPage/404.vue'))['default']
     500: (typeof import('./src/components/ErrorPage/500.vue'))['default']
-    Dropdown: (typeof import('./src/components/Dropdown/dropdown.vue'))['default']
     ElAside: (typeof import('element-plus/es'))['ElAside']
     ElBreadcrumb: (typeof import('element-plus/es'))['ElBreadcrumb']
     ElBreadcrumbItem: (typeof import('element-plus/es'))['ElBreadcrumbItem']
@@ -35,7 +34,6 @@ declare module 'vue' {
     IconUser: (typeof import('./src/components/icons/IconUser.vue'))['default']
     RouterLink: (typeof import('vue-router'))['RouterLink']
     RouterView: (typeof import('vue-router'))['RouterView']
-    User: (typeof import('./src/components/icon/user.vue'))['default']
     YoDropdown: (typeof import('./src/components/Dropdown/yoDropdown.vue'))['default']
   }
 }
