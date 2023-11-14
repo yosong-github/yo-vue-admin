@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-14 14:20:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-14 22:52:18
+ * @LastEditTime: 2023-11-14 23:25:27
  * @FilePath: \yo-vue-admin\src\layouts\components\Tabs\YoTabs.vue
 -->
 <template>
@@ -10,7 +10,7 @@
     <yo-dropdown v-if="showArrow" class="arrow" header-cpn="ArrowLeft" :items="[]" :bind-obj="{}" @handle-command="right" />
     <div ref="tabsList" class="list">
       <div class="listContent">
-        <template v-for="it in historyTabs" :key="it">
+        <template v-for="it in historyTabs" :key="it.path">
           <div class="item" @click="$router.push(it.path)">
             <span :class="{ active: it.path === $route.path }">{{ it.title }}</span>
             <el-icon v-if="!it.noDel" type="delete" @click.stop="del(it)"><Close /></el-icon>
@@ -54,9 +54,20 @@ const del = (it: historyTabsType) => {
   }
 }
 
+// 移动的距离
+const x = ref(0)
+
 // 监听元素大小变化
 const resizeObserver = new ResizeObserver(entries => {
   if (!(tabsList.value?.lastChild as HTMLDivElement)) return
+  if (!tabsList.value) return
+
+  // 改变屏幕大小时，重置移动位置
+  if (x.value != 0) {
+    x.value = 0
+    ;(tabsList.value.lastChild! as HTMLDivElement).style.transform = `translateX(-${x.value}px)`
+  }
+
   if (entries[0].contentRect.width < (tabsList.value?.lastChild as HTMLDivElement).offsetWidth) {
     showArrow.value = true
   } else {
@@ -87,8 +98,6 @@ onUnmounted(() => {
   resizeObserverForItem.unobserve(tabsList.value!.lastChild! as HTMLDivElement)
 })
 
-// 移动的距离
-const x = ref(0)
 const left = () => {
   if (!tabsList.value) return
   if (x.value + tabsList.value.offsetWidth! >= (tabsList.value.lastChild! as HTMLDivElement).offsetWidth - tabsList.value.offsetWidth) {
