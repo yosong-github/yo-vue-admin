@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 13:59:32
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-10 13:59:41
+ * @LastEditTime: 2023-11-14 11:09:01
  * @FilePath: \yo-vue-admin\src\hooks\useRouteCache.ts
  */
 import { ref, nextTick } from 'vue'
@@ -30,7 +30,7 @@ export default function useRouteCache() {
     }
   }
 
-  // 移除缓存的路由组件的实例
+  // 移除缓存的路由组件的实例(相当于刷新)
   async function removeCacheEntry(componentName: string) {
     if (removeCache(componentName)) {
       await nextTick()

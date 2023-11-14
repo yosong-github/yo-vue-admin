@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 17:26:24
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-11 01:08:31
+ * @LastEditTime: 2023-11-14 17:38:06
  * @FilePath: \yo-vue-admin\src\styles\style\common.ts
  */
 export const commonTheme: {
@@ -22,7 +22,8 @@ export const commonTheme: {
     // 主要背景色
     '--common-bg-color': '#ffffff',
     // 主要边框颜色
-    '--common-border-color': '#dcdfe6'
+    '--common-border-color': '#dcdfe6',
+    '--el-tabs-close-hover-bg-color': 'var(--el-color-danger)'
   },
   // 黑暗
   dark: {
@@ -37,6 +38,7 @@ export const commonTheme: {
     // 主要背景色
     '--common-bg-color': '#141414',
     // 主要边框颜色
-    '--common-border-color': '#414243'
+    '--common-border-color': '#414243',
+    '--el-tabs-close-hover-bg-color': 'var(--el-color-danger-light-3)'
   }
 }

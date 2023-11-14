@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 16:25:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-11 19:12:51
+ * @LastEditTime: 2023-11-14 14:35:13
  * @FilePath: \yo-vue-admin\src\layouts\layoutClassical\index.vue
 -->
 <!-- 经典布局 -->
@@ -24,7 +24,10 @@
         <header-left></header-left>
         <header-right></header-right>
       </el-header>
-      <el-main><Main /></el-main>
+      <yo-tabs />
+      <el-main>
+        <Main />
+      </el-main>
       <el-footer>Footer</el-footer>
     </el-container>
   </el-container>
@@ -39,6 +42,7 @@ import { useGlobalStore } from '@/stores/modules/global'
 import { storeToRefs } from 'pinia'
 import headerLeft from '../components/HeaderLeft/index.vue'
 import headerRight from '../components/HeaderRight/index.vue'
+import YoTabs from '../components/Tabs/YoTabs.vue'
 
 const { getMenuList } = useUserStore()
 const { isCollapse } = storeToRefs(useGlobalStore())

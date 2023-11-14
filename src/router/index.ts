@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-07 14:48:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-10 14:38:38
+ * @LastEditTime: 2023-11-14 17:50:54
  * @FilePath: \yo-vue-admin\src\router\index.ts
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
@@ -11,6 +11,7 @@ import { useUserStore } from '@/stores/modules/user'
 import { storeToRefs } from 'pinia'
 import { staticRouter, errorRouter } from './modules/staticRouter'
 import { initDynamicRouter } from './modules/dynamicRouter'
+import { useGlobalStore } from '@/stores/modules/global'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -21,7 +22,9 @@ const router = createRouter({
  * @description 路由拦截 beforeEach
  * */
 router.beforeEach(async (to, from, next) => {
+  const { currentRouteName } = storeToRefs(useGlobalStore())
   const { userInfo, authMenuList } = storeToRefs(useUserStore())
+  const { addHistoryTabs } = useUserStore()
 
   // 1.NProgress 开始
   NProgress.start()
@@ -46,7 +49,16 @@ router.beforeEach(async (to, from, next) => {
     return next({ ...to, replace: true })
   }
 
-  // 7.正常访问页面
+  // 7.设置当前路由（用户刷新当前page）
+  currentRouteName.value = to.name as string
+
+  // 8.添加历史tabs
+  addHistoryTabs({
+    title: to.meta.title as string,
+    path: to.path
+  })
+
+  // 9.正常访问页面
   next()
 })
 

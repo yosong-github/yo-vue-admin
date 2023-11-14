@@ -2,29 +2,71 @@
  * @Author: yosong
  * @Date: 2023-11-13 15:06:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-13 21:50:16
+ * @LastEditTime: 2023-11-14 13:17:37
  * @FilePath: \yo-vue-admin\src\layouts\components\HeaderRight\config\headerControlItem.ts
  */
 import type { yoDropdwonType } from '@/components/Dropdown/type'
 import { useGlobalStore } from '@/stores/modules/global'
 import { storeToRefs } from 'pinia'
 import screenfull from 'screenfull'
-import { ref, computed } from 'vue'
+import { ref, computed, nextTick } from 'vue'
 import { ElMessage } from 'element-plus'
+import useRouteCache from '@/hooks/useRouteCache'
 
 interface headerControlItemType extends yoDropdwonType {
   cb: (id: string) => void
 }
 
-const { changeLanguage } = useGlobalStore()
+// 全局配置
+const { changeLanguage, setTheme } = useGlobalStore()
 // 语言
-const { language } = storeToRefs(useGlobalStore())
+const { language, assemblySize, theme, currentRouteName, refresh } = storeToRefs(useGlobalStore())
+// 刷新缓存
+const { removeCacheEntry } = useRouteCache()
 
 // 是否是全屏
 const isFullscreen = ref(screenfull.isFullscreen)
+console.log(screenfull)
+
+// 解决esc/刷新退出全屏的问题
+screenfull.onchange(() => {
+  if (screenfull.isFullscreen) isFullscreen.value = true
+  else isFullscreen.value = false
+})
 
 // 顶部导航栏右侧按钮对象
 export const headerItem = ref<headerControlItemType[]>([
+  {
+    headerCpn: 'IconRefresh',
+    cb: () => {
+      refresh.value = false
+      removeCacheEntry(currentRouteName.value)
+      nextTick(() => {
+        refresh.value = true
+      })
+    },
+    items: []
+  },
+  {
+    headerCpn: computed(() => {
+      return theme.value == 'dark' ? 'IconThemeDark' : 'IconThemeLight'
+    }),
+    cb: () => {
+      setTheme()
+    },
+    items: []
+  },
+  {
+    headerCpn: 'IconSize',
+    cb: () => {
+      assemblySize.value == 'default'
+        ? (assemblySize.value = 'small')
+        : assemblySize.value == 'small'
+        ? (assemblySize.value = 'large')
+        : (assemblySize.value = 'default')
+    },
+    items: []
+  },
   {
     headerCpn: computed(() => {
       if (isFullscreen.value) {

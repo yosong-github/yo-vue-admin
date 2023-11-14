@@ -17,3 +17,9 @@ export interface menuList {
   meta: MetaProps
   children?: menuList[]
 }
+
+export interface historyTabs {
+  path: string
+  title: string
+  noDel?: boolean
+}

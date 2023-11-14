@@ -1,16 +1,17 @@
 /*
  * @Author: yosong
- * @Date: 2023-11-10 10:25:53
+ * @Date: 2023-11-13 10:00:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-13 10:14:59
+ * @LastEditTime: 2023-11-14 18:02:05
  * @FilePath: \yo-vue-admin\src\stores\modules\user.ts
  */
 import { defineStore } from 'pinia'
 import piniaPersistConfig from '@/stores/helper/persist'
 import { ref } from 'vue'
-import type { menuList } from '../interface/index'
+import type { menuList, historyTabs } from '../interface/index'
 import { getFlatMenuList, getShowMenuList } from '@/utils'
 
+// 模拟请求路由
 const getAuthMenuListApi = (): Promise<menuList[]> => {
   return new Promise(resolve => {
     setTimeout(() => {
@@ -106,7 +107,7 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
               path: '/menu/menu3',
               name: 'Menu3',
               component: '/menu/menu3/index',
-              meta: { icon: 'Menu', title: '菜单3', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: false }
+              meta: { icon: 'Menu', title: '菜单3', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: true }
             }
           ]
         }
@@ -126,6 +127,9 @@ export const useUserStore = defineStore(
     })
     //菜单列表
     const authMenuList = ref<menuList[]>([])
+
+    // tabs标签
+    const historyTabs = ref<historyTabs[]>([{ path: '/dashboard', title: '首页', noDel: true }])
 
     // 清除用户信息
     const resetUser = () => {
@@ -151,11 +155,37 @@ export const useUserStore = defineStore(
       })
     }
 
+    // 获取用户菜单
     const getMenuList = () => getShowMenuList(authMenuList.value)
 
-    return { userInfo, authMenuList, resetUser, getAuthMenuList, getAuthmenuListForRoute, getMenuList }
+    // 添加历史tabs
+    const addHistoryTabs = (tab: historyTabs) => {
+      const index = historyTabs.value.findIndex(it => it.path === tab.path)
+      if (index === -1) {
+        historyTabs.value.push(tab)
+      }
+    }
+    // 删除历史tabs
+    const deleteHistoryTabs = (path: string) => {
+      const index = historyTabs.value.findIndex(it => it.path === path)
+      if (index !== -1) {
+        historyTabs.value.splice(index, 1)
+      }
+    }
+
+    return {
+      userInfo,
+      authMenuList,
+      resetUser,
+      getAuthMenuList,
+      getAuthmenuListForRoute,
+      getMenuList,
+      historyTabs,
+      addHistoryTabs,
+      deleteHistoryTabs
+    }
   },
   {
-    persist: piniaPersistConfig('user', ['userInfo']) // 排除用户路由的持久化，做到刷新路由重置
+    persist: piniaPersistConfig('user', ['userInfo', 'historyTabs']) // 排除用户路由的持久化，做到刷新路由重置
   }
 )

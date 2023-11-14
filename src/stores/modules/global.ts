@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-08 15:20:35
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-13 16:33:32
+ * @LastEditTime: 2023-11-14 11:38:46
  * @FilePath: \yo-vue-admin\src\stores\modules\global.ts
  */
 import { defineStore } from 'pinia'
@@ -20,6 +20,10 @@ export const useGlobalStore = defineStore(
     const theme = ref<'light' | 'dark'>('light')
     // 菜单是否折叠
     const isCollapse = ref(false)
+    // 当前路由名称
+    const currentRouteName = ref<string>('')
+    // 刷新
+    const refresh = ref(true)
 
     // 切换主题
     const setTheme = () => {
@@ -32,7 +36,7 @@ export const useGlobalStore = defineStore(
       language.value = setlanguage
     }
 
-    return { language, assemblySize, theme, setTheme, isCollapse, changeLanguage }
+    return { language, assemblySize, theme, setTheme, isCollapse, changeLanguage, currentRouteName, refresh }
   },
   {
     persist: piniaPersistConfig('global')
