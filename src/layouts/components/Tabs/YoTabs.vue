@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-14 14:20:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-14 18:05:49
+ * @LastEditTime: 2023-11-14 22:52:18
  * @FilePath: \yo-vue-admin\src\layouts\components\Tabs\YoTabs.vue
 -->
 <template>
@@ -20,9 +20,7 @@
     </div>
     <yo-dropdown v-if="showArrow" class="arrow" header-cpn="ArrowRight" :items="[]" :bind-obj="{}" @handle-command="left" />
     <div class="edit">
-      <template v-for="it in dropDownList" :key="it.title">
-        <yo-dropdown :title="it.title" :header-cpn="it.headerCpn" :items="it.items" :bind-obj="it.bindObj" @handle-command="it.cb" />
-      </template>
+      <yo-dropdown header-cpn="Grid" :items="[]" @handle-command="tabsEvn" />
     </div>
   </div>
 </template>
@@ -30,7 +28,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import yoDropdown from '@/components/Dropdown/yoDropdown.vue'
-import { headerItem as dropDownList } from './config/yoTabsControlItem'
 import { onMounted } from 'vue'
 import { onUnmounted } from 'vue'
 import { useUserStore } from '@/stores/modules/user'
@@ -109,6 +106,10 @@ const right = () => {
     x.value -= tabsList.value.offsetWidth
   }
   ;(tabsList.value.lastChild! as HTMLDivElement).style.transform = `translateX(-${x.value}px)`
+}
+
+const tabsEvn = () => {
+  console.log('tabs功能事件')
 }
 </script>
 

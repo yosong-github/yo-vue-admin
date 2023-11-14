@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-11 18:17:58
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-13 10:19:35
+ * @LastEditTime: 2023-11-14 19:28:55
  * @FilePath: \yo-vue-admin\src\layouts\components\HeaderLeft\index.vue
 -->
 <template>
@@ -51,6 +51,7 @@ onUnmounted(() => {
   align-items: center;
   overflow: hidden;
   white-space: nowrap;
+  min-width: 90px;
   > .el-icon {
     cursor: pointer;
     margin-right: 20px;

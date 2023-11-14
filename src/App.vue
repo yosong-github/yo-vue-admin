@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-07 14:48:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-11 12:51:23
+ * @LastEditTime: 2023-11-14 21:33:43
  * @FilePath: \yo-vue-admin\src\App.vue
 -->
 <template>

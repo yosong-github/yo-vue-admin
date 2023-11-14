@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-07 14:48:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-14 17:50:54
+ * @LastEditTime: 2023-11-14 21:36:55
  * @FilePath: \yo-vue-admin\src\router\index.ts
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
