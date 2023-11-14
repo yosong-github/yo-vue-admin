@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 15:06:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-13 17:29:52
+ * @LastEditTime: 2023-11-13 21:50:16
  * @FilePath: \yo-vue-admin\src\layouts\components\HeaderRight\config\headerControlItem.ts
  */
 import type { yoDropdwonType } from '@/components/Dropdown/type'
@@ -33,7 +33,10 @@ export const headerItem = ref<headerControlItemType[]>([
       return 'FullScreen'
     }),
     cb: () => {
-      if (!screenfull.isEnabled) ElMessage.warning('当前您的浏览器不支持全屏 ❌')
+      if (!screenfull.isEnabled) {
+        ElMessage.warning('当前您的浏览器不支持全屏')
+        return
+      }
       screenfull.toggle()
       isFullscreen.value = screenfull.isFullscreen ? false : true
     },
