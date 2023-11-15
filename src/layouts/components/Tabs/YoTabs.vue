@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-14 14:20:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-14 23:25:27
+ * @LastEditTime: 2023-11-15 15:18:48
  * @FilePath: \yo-vue-admin\src\layouts\components\Tabs\YoTabs.vue
 -->
 <template>
@@ -20,7 +20,19 @@
     </div>
     <yo-dropdown v-if="showArrow" class="arrow" header-cpn="ArrowRight" :items="[]" :bind-obj="{}" @handle-command="left" />
     <div class="edit">
-      <yo-dropdown header-cpn="Grid" :items="[]" @handle-command="tabsEvn" />
+      <!-- trigger="hover" -->
+      <yo-dropdown
+        header-cpn="Grid"
+        :items="[
+          { title: '内容区域全屏', command: 'FullScreen', icon: 'FullScreen' },
+          { title: '关闭当前页签', command: 'RemoveCurrent', divided: true, icon: 'CloseBold' },
+          { title: '关闭左侧页签', command: 'RemoveLeft', icon: 'DArrowLeft' },
+          { title: '关闭右侧页签', command: 'RemoveRight', icon: 'DArrowRight' },
+          { title: '关闭其他页签', command: 'RemoveOther', divided: true, icon: 'Remove' },
+          { title: '关闭全部页签', command: 'RemoveAll', icon: 'CircleCloseFilled' }
+        ]"
+        @handle-command="tabsEvn"
+      />
     </div>
   </div>
 </template>
@@ -36,7 +48,7 @@ import type { historyTabs as historyTabsType } from '@/stores/interface/index'
 import { useRoute, useRouter } from 'vue-router'
 
 const { historyTabs } = storeToRefs(useUserStore())
-const { deleteHistoryTabs } = useUserStore()
+const { deleteHistoryTabs, deleteHistoryTabsL, deleteHistoryTabsR, deleteOtherTabs, deleteAllTabs } = useUserStore()
 
 const route = useRoute()
 const router = useRouter()
@@ -47,6 +59,7 @@ const tabsList = ref<HTMLDivElement | null>(null)
 // 判断箭头是否可用
 const showArrow = ref(false)
 
+// 删除item
 const del = (it: historyTabsType) => {
   deleteHistoryTabs(it.path)
   if (it.path === route.path) {
@@ -57,7 +70,7 @@ const del = (it: historyTabsType) => {
 // 移动的距离
 const x = ref(0)
 
-// 监听元素大小变化
+// 监听最外层元素大小变化
 const resizeObserver = new ResizeObserver(entries => {
   if (!(tabsList.value?.lastChild as HTMLDivElement)) return
   if (!tabsList.value) return
@@ -74,6 +87,7 @@ const resizeObserver = new ResizeObserver(entries => {
     showArrow.value = false
   }
 })
+// 箭头itme列表长度的变化
 const resizeObserverForItem = new ResizeObserver(entries => {
   if (!(tabsList.value as HTMLDivElement)) return
   if (entries[0].contentRect.width > (tabsList.value as HTMLDivElement).offsetWidth) {
@@ -98,6 +112,7 @@ onUnmounted(() => {
   resizeObserverForItem.unobserve(tabsList.value!.lastChild! as HTMLDivElement)
 })
 
+// 箭头点击移动
 const left = () => {
   if (!tabsList.value) return
   if (x.value + tabsList.value.offsetWidth! >= (tabsList.value.lastChild! as HTMLDivElement).offsetWidth - tabsList.value.offsetWidth) {
@@ -107,6 +122,8 @@ const left = () => {
   }
   ;(tabsList.value.lastChild! as HTMLDivElement).style.transform = `translateX(-${x.value}px)`
 }
+
+// 箭头点击移动
 const right = () => {
   if (!tabsList.value) return
   if (x.value <= 0 || x.value - tabsList.value.offsetWidth <= 0) {
@@ -117,14 +134,38 @@ const right = () => {
   ;(tabsList.value.lastChild! as HTMLDivElement).style.transform = `translateX(-${x.value}px)`
 }
 
-const tabsEvn = () => {
-  console.log('tabs功能事件')
+// tbs功能事件
+const tabsEvn = (type: string) => {
+  switch (type) {
+    case 'FullScreen':
+      document.querySelector('#app')!.setAttribute('class', 'fullScreen')
+      break
+    case 'RemoveCurrent':
+      deleteHistoryTabs(route.path)
+      router.push(historyTabs.value[historyTabs.value.length - 1].path)
+      break
+    case 'RemoveLeft':
+      deleteHistoryTabsL(route.path)
+      break
+    case 'RemoveRight':
+      deleteHistoryTabsR(route.path)
+      break
+    case 'RemoveOther':
+      deleteOtherTabs(route.path)
+      break
+    case 'RemoveAll':
+      deleteAllTabs()
+      router.push(historyTabs.value[historyTabs.value.length - 1].path)
+      break
+    default:
+      break
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .yoTabs {
-  height: 35px;
+  height: 30px;
   border-bottom: 1px solid var(--el-menu-border-color);
   background-color: var(--el-menu-bg-color);
   padding: 0 12px;

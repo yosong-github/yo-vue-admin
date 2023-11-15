@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 17:26:24
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-11 01:09:55
+ * @LastEditTime: 2023-11-15 10:46:05
  * @FilePath: \yo-vue-admin\src\styles\style\menu.ts
  */
 export const menuTheme: {
@@ -19,6 +19,7 @@ export const menuTheme: {
     '--el-menu-border-color': '#dcdfe6',
     // 菜单选中背景
     '--el-menu-active-bg-color': '#a8e1e37d',
+    '----el-menu-bg-min-color': '#cdcccc00',
     // 选中菜单字体颜色
     '--el-menu-active-text-color': '#117376',
     // 选中菜单左侧图标颜色
@@ -36,6 +37,7 @@ export const menuTheme: {
     '--el-menu-border-color': '#414243',
     // 菜单选中背景
     '--el-menu-active-bg-color': '#000000',
+    '--el-menu-bg-min-color': '#cdcccc00',
     // 选中菜单字体颜色
     '--el-menu-active-text-color': '#fff',
     // 选中菜单左侧图标颜色

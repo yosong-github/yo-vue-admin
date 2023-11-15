@@ -31,6 +31,7 @@ declare module 'vue' {
     ElTimePicker: (typeof import('element-plus/es'))['ElTimePicker']
     IconLanguages: (typeof import('./src/components/icons/IconLanguages.vue'))['default']
     IconOutFullScreen: (typeof import('./src/components/icons/IconOutFullScreen.vue'))['default']
+    IconOutSide: (typeof import('./src/components/icons/IconOutSide.vue'))['default']
     IconRefresh: (typeof import('./src/components/icons/IconRefresh.vue'))['default']
     IconSize: (typeof import('./src/components/icons/IconSize.vue'))['default']
     IconThemeDark: (typeof import('./src/components/icons/IconThemeDark.vue'))['default']

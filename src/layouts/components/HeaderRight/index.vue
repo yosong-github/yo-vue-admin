@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-11 18:17:58
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-14 22:54:50
+ * @LastEditTime: 2023-11-15 16:07:39
  * @FilePath: \yo-vue-admin\src\layouts\components\HeaderRight\index.vue
 -->
 <template>
@@ -16,7 +16,6 @@
 <script setup lang="ts">
 import yoDropdown from '@/components/Dropdown/yoDropdown.vue'
 import { headerItem } from './config/headerControlItem'
-console.log(headerItem)
 </script>
 
 <style lang="scss" scoped>

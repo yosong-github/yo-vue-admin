@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 10:00:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-14 18:02:05
+ * @LastEditTime: 2023-11-15 15:04:31
  * @FilePath: \yo-vue-admin\src\stores\modules\user.ts
  */
 import { defineStore } from 'pinia'
@@ -172,6 +172,31 @@ export const useUserStore = defineStore(
         historyTabs.value.splice(index, 1)
       }
     }
+    // 删除历史左右tabs
+    const deleteHistoryTabsL = (path: string) => {
+      const index = historyTabs.value.findIndex(it => it.path === path)
+      if (index !== -1) {
+        historyTabs.value = historyTabs.value.filter((it, idx) => idx >= index || it.noDel)
+      }
+    }
+    // 删除历史右边tabs
+    const deleteHistoryTabsR = (path: string) => {
+      const index = historyTabs.value.findIndex(it => it.path === path)
+      if (index !== -1) {
+        historyTabs.value = historyTabs.value.filter((it, idx) => idx <= index || it.noDel)
+      }
+    }
+    // 删除其他tabs
+    const deleteOtherTabs = (path: string) => {
+      const index = historyTabs.value.findIndex(it => it.path === path)
+      if (index !== -1) {
+        historyTabs.value = historyTabs.value.filter(it => it.path === path || it.noDel)
+      }
+    }
+    // 删除所有tabs
+    const deleteAllTabs = () => {
+      historyTabs.value = historyTabs.value.filter(it => it.noDel)
+    }
 
     return {
       userInfo,
@@ -182,7 +207,11 @@ export const useUserStore = defineStore(
       getMenuList,
       historyTabs,
       addHistoryTabs,
-      deleteHistoryTabs
+      deleteHistoryTabs,
+      deleteHistoryTabsL,
+      deleteHistoryTabsR,
+      deleteOtherTabs,
+      deleteAllTabs
     }
   },
   {

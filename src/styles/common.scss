@@ -94,3 +94,17 @@
     0 0 10px var(--el-color-primary),
     0 0 5px var(--el-color-primary) !important;
 }
+
+/* 当前页面最大化 css */
+.fullScreen {
+  .aside-split,
+  .el-aside,
+  .el-header,
+  .el-footer,
+  .yoTabs {
+    display: none !important;
+  }
+  .YoFullScreen {
+    display: block !important;
+  }
+}

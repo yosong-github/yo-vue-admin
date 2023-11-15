@@ -5,6 +5,7 @@ type yoDropdwonItems = {
   title: string | number
   disabled?: ComputedRef<boolean> | boolean
   divided?: ComputedRef<boolean> | boolean
+  icon?: string
 }
 
 type yoDropdwonType = {

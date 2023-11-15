@@ -18,7 +18,9 @@
         <template #dropdown>
           <el-dropdown-menu>
             <template v-for="item in items" :key="item.command">
-              <el-dropdown-item :command="item.command" :disabled="item.disabled">{{ item.title }} {{ item.disabled }}</el-dropdown-item>
+              <el-dropdown-item :icon="item.icon" :command="item.command" :disabled="item.disabled" :divided="item.divided"
+                >{{ item.title }} {{ item.disabled }}</el-dropdown-item
+              >
             </template>
           </el-dropdown-menu>
         </template>

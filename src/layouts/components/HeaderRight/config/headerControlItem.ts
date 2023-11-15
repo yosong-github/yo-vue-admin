@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 15:06:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-14 23:01:31
+ * @LastEditTime: 2023-11-15 15:11:20
  * @FilePath: \yo-vue-admin\src\layouts\components\HeaderRight\config\headerControlItem.ts
  */
 import type { yoDropdwonType } from '@/components/Dropdown/type'
@@ -97,13 +97,6 @@ export const headerItem = ref<headerControlItemType[]>([
     ]
   },
   {
-    title: 'yosong',
-    cb: (id: string) => {
-      console.log(id)
-    },
-    items: []
-  },
-  {
     headerCpn: 'IconUser',
     cb: (id: string) => {
       console.log(id)
@@ -111,6 +104,9 @@ export const headerItem = ref<headerControlItemType[]>([
     bindObj: {
       url: '../../src/assets/images/yosong.png'
     },
-    items: [{ command: 'out', title: '退出登录' }]
+    items: [
+      { command: 'yosong', title: 'yosong' },
+      { command: 'out', title: '退出登录' }
+    ]
   }
 ])
