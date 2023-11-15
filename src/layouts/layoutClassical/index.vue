@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 16:25:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-14 14:35:13
+ * @LastEditTime: 2023-11-14 22:53:47
  * @FilePath: \yo-vue-admin\src\layouts\layoutClassical\index.vue
 -->
 <!-- 经典布局 -->
@@ -26,7 +26,7 @@
       </el-header>
       <yo-tabs />
       <el-main>
-        <Main />
+        <Main></Main>
       </el-main>
       <el-footer>Footer</el-footer>
     </el-container>

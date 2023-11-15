@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 15:06:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-14 13:17:37
+ * @LastEditTime: 2023-11-14 23:01:31
  * @FilePath: \yo-vue-admin\src\layouts\components\HeaderRight\config\headerControlItem.ts
  */
 import type { yoDropdwonType } from '@/components/Dropdown/type'
@@ -26,13 +26,15 @@ const { removeCacheEntry } = useRouteCache()
 
 // 是否是全屏
 const isFullscreen = ref(screenfull.isFullscreen)
-console.log(screenfull)
 
 // 解决esc/刷新退出全屏的问题
-screenfull.onchange(() => {
-  if (screenfull.isFullscreen) isFullscreen.value = true
-  else isFullscreen.value = false
-})
+// 苹果浏览器的手机没有这个事件
+if (screenfull.on) {
+  screenfull.on('change', () => {
+    if (screenfull.isFullscreen) isFullscreen.value = true
+    else isFullscreen.value = false
+  })
+}
 
 // 顶部导航栏右侧按钮对象
 export const headerItem = ref<headerControlItemType[]>([
