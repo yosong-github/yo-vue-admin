@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 10:00:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-13 15:05:08
+ * @LastEditTime: 2023-11-16 11:41:42
  * @FilePath: \yo-vue-admin\src\main.ts
  */
 import { createApp } from 'vue'
@@ -28,7 +28,9 @@ import pinia from '@/stores/index'
 import errorHandler from '@/utils/errorHandler'
 
 const app = createApp(App)
-app.config.errorHandler = errorHandler
+if (import.meta.env.MODE !== 'development') {
+  app.config.errorHandler = errorHandler
+}
 
 // 注册图标
 Object.keys(Icons).forEach(key => {

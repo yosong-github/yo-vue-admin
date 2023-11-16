@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 16:25:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-15 14:22:59
+ * @LastEditTime: 2023-11-16 14:44:22
  * @FilePath: \yo-vue-admin\src\layouts\layoutClassical\index.vue
 -->
 <!-- 经典布局 -->
@@ -14,7 +14,7 @@
         <span v-show="!isCollapse" class="logo-text">yo-admin</span>
       </div>
       <el-scrollbar>
-        <el-menu :router="false" :default-active="$route.path" :collapse="isCollapse" :unique-opened="true">
+        <el-menu :router="false" :default-active="$route.path" :collapse="isCollapse" :unique-opened="uniaueOpened">
           <SubMenu :menu-list="menuList" />
         </el-menu>
       </el-scrollbar>
@@ -26,7 +26,7 @@
           <span class="logo-text">yo-admin</span>
         </div>
         <el-scrollbar>
-          <el-menu :router="false" :default-active="$route.path" :unique-opened="true">
+          <el-menu :router="false" :default-active="$route.path" :unique-opened="uniaueOpened">
             <SubMenu :menu-list="menuList" />
           </el-menu>
         </el-scrollbar>
@@ -37,12 +37,12 @@
         <header-left></header-left>
         <header-right></header-right>
       </el-header>
-      <yo-tabs />
+      <yo-tabs v-if="isTabs" />
       <yo-full-screen></yo-full-screen>
       <el-main>
         <Main></Main>
       </el-main>
-      <el-footer>Footer</el-footer>
+      <el-footer v-if="isFooter">Footer</el-footer>
     </el-container>
   </el-container>
 </template>
@@ -60,7 +60,7 @@ import YoFullScreen from '../components/FullScreen/YoFullScreen.vue'
 import YoTabs from '../components/Tabs/YoTabs.vue'
 
 const { getMenuList } = useUserStore()
-const { isCollapse } = storeToRefs(useGlobalStore())
+const { isCollapse, uniaueOpened, isTabs, isFooter } = storeToRefs(useGlobalStore())
 
 const menuList = computed(() => getMenuList())
 </script>

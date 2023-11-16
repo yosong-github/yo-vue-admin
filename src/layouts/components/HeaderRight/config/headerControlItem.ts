@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 15:06:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-15 15:11:20
+ * @LastEditTime: 2023-11-16 16:00:08
  * @FilePath: \yo-vue-admin\src\layouts\components\HeaderRight\config\headerControlItem.ts
  */
 import type { yoDropdwonType } from '@/components/Dropdown/type'
@@ -20,7 +20,7 @@ interface headerControlItemType extends yoDropdwonType {
 // 全局配置
 const { changeLanguage, setTheme } = useGlobalStore()
 // 语言
-const { language, assemblySize, theme, currentRouteName, refresh } = storeToRefs(useGlobalStore())
+const { language, assemblySize, theme, currentRouteName, refresh, editThemeState } = storeToRefs(useGlobalStore())
 // 刷新缓存
 const { removeCacheEntry } = useRouteCache()
 
@@ -93,20 +93,28 @@ export const headerItem = ref<headerControlItemType[]>([
     },
     items: [
       { command: 'zh', title: '中文', disabled: computed(() => language.value == 'zh') },
-      { command: 'en', title: '英文', disabled: computed(() => language.value == 'en') }
+      { command: 'en', title: 'English', disabled: computed(() => language.value == 'en') }
     ]
+  },
+  {
+    headerCpn: 'Tools',
+    cb: () => {
+      editThemeState.value = true
+    },
+    items: []
   },
   {
     headerCpn: 'IconUser',
     cb: (id: string) => {
       console.log(id)
     },
+    i18n: true,
     bindObj: {
-      url: '../../src/assets/images/yosong.png'
+      url: import.meta.env.MODE == 'development' ? '../../src/assets/images/yosong.png' : './assets/yosong.png'
     },
     items: [
       { command: 'yosong', title: 'yosong' },
-      { command: 'out', title: '退出登录' }
+      { command: 'out', title: 'layout.user.logout', i18n: true }
     ]
   }
 ])

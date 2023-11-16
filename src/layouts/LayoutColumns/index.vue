@@ -10,7 +10,7 @@
           <template v-for="it in menuList" :key="it.path">
             <div class="item" :class="{ active: it.meta.title == activeMenu?.meta.title }" @click="handleClick(it)">
               <component :is="it.meta.icon"></component>
-              <span>{{ it.meta.title }}</span>
+              <span class="sle" style="width: 80%; text-align: center">{{ $t(it.meta.title) }}</span>
             </div>
           </template>
         </div>
@@ -25,7 +25,7 @@
         <span style="text-align: center; width: 100%">{{ isCollapse ? 'Y' : 'yo-admin' }}</span>
       </div>
       <el-scrollbar>
-        <el-menu :router="false" :default-active="$route.path" :collapse="isCollapse" :unique-opened="true">
+        <el-menu :router="false" :default-active="$route.path" :collapse="isCollapse" :unique-opened="uniaueOpened">
           <SubMenu :menu-list="subMenList" />
         </el-menu>
       </el-scrollbar>
@@ -38,7 +38,7 @@
           <span class="logo-text">yo-admin</span>
         </div>
         <el-scrollbar>
-          <el-menu :router="false" :default-active="$route.path" :unique-opened="true">
+          <el-menu :router="false" :default-active="$route.path" :unique-opened="uniaueOpened">
             <SubMenu :menu-list="menuList" />
           </el-menu>
         </el-scrollbar>
@@ -50,12 +50,12 @@
         <header-left></header-left>
         <header-right></header-right>
       </el-header>
-      <yo-tabs />
+      <yo-tabs v-if="isTabs" />
       <yo-full-screen></yo-full-screen>
       <el-main>
         <Main></Main>
       </el-main>
-      <el-footer>Footer</el-footer>
+      <el-footer v-if="isFooter">Footer</el-footer>
     </el-container>
   </el-container>
 </template>
@@ -78,7 +78,7 @@ import { watchEffect } from 'vue'
 import router from '@/router'
 
 const { getMenuList } = useUserStore()
-const { isCollapse } = storeToRefs(useGlobalStore())
+const { isCollapse, uniaueOpened, isTabs, isFooter } = storeToRefs(useGlobalStore())
 
 const route = useRoute()
 

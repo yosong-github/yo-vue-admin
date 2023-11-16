@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-14 14:20:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-15 15:18:48
+ * @LastEditTime: 2023-11-16 15:36:08
  * @FilePath: \yo-vue-admin\src\layouts\components\Tabs\YoTabs.vue
 -->
 <template>
@@ -12,7 +12,7 @@
       <div class="listContent">
         <template v-for="it in historyTabs" :key="it.path">
           <div class="item" @click="$router.push(it.path)">
-            <span :class="{ active: it.path === $route.path }">{{ it.title }}</span>
+            <span :class="{ active: it.path === $route.path }">{{ $t(it.title) }}</span>
             <el-icon v-if="!it.noDel" type="delete" @click.stop="del(it)"><Close /></el-icon>
           </div>
         </template>
@@ -24,12 +24,12 @@
       <yo-dropdown
         header-cpn="Grid"
         :items="[
-          { title: '内容区域全屏', command: 'FullScreen', icon: 'FullScreen' },
-          { title: '关闭当前页签', command: 'RemoveCurrent', divided: true, icon: 'CloseBold' },
-          { title: '关闭左侧页签', command: 'RemoveLeft', icon: 'DArrowLeft' },
-          { title: '关闭右侧页签', command: 'RemoveRight', icon: 'DArrowRight' },
-          { title: '关闭其他页签', command: 'RemoveOther', divided: true, icon: 'Remove' },
-          { title: '关闭全部页签', command: 'RemoveAll', icon: 'CircleCloseFilled' }
+          { title: $t('layout.tabs.full'), command: 'FullScreen', icon: 'FullScreen' },
+          { title: $t('layout.tabs.c_current'), command: 'RemoveCurrent', divided: true, icon: 'CloseBold' },
+          { title: $t('layout.tabs.c_l'), command: 'RemoveLeft', icon: 'DArrowLeft' },
+          { title: $t('layout.tabs.c_r'), command: 'RemoveRight', icon: 'DArrowRight' },
+          { title: $t('layout.tabs.c_other'), command: 'RemoveOther', divided: true, icon: 'Remove' },
+          { title: $t('layout.tabs.c_all'), command: 'RemoveAll', icon: 'CircleCloseFilled' }
         ]"
         @handle-command="tabsEvn"
       />

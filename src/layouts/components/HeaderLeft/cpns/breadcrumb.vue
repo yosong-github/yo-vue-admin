@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 10:00:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-13 10:34:56
+ * @LastEditTime: 2023-11-16 15:19:55
  * @FilePath: \yo-vue-admin\src\layouts\components\HeaderLeft\cpns\breadcrumb.vue
 -->
 <template>
@@ -11,10 +11,10 @@
       <template v-for="it in list" :key="it.path">
         <el-breadcrumb-item :to="{ path: it.redirect ?? it.path }">
           <div>
-            <el-icon>
+            <el-icon v-if="isbreadcumbIcon">
               <component :is="it.meta.icon"></component>
             </el-icon>
-            <span>{{ it.meta.title }}</span>
+            <span>{{ $t(it.meta.title) }}</span>
           </div>
         </el-breadcrumb-item>
       </template>
@@ -28,11 +28,13 @@ import { ArrowRight } from '@element-plus/icons-vue'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/modules/user'
+import { useGlobalStore } from '@/stores/modules/global'
 import type { menuList } from '@/stores/interface'
 import { watchEffect } from 'vue'
 
 const route = useRoute()
 const { authMenuList } = storeToRefs(useUserStore())
+const { isbreadcumbIcon } = storeToRefs(useGlobalStore())
 
 const list = ref<menuList[]>([])
 

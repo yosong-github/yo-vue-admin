@@ -9,7 +9,7 @@
   <div class="headerl">
     <el-icon v-show="isCollapse" @click="check"><Expand /></el-icon>
     <el-icon v-show="!isCollapse" @click="check"><Fold /></el-icon>
-    <breadcumb />
+    <breadcumb v-show="isbreadcumb" />
   </div>
 </template>
 
@@ -20,7 +20,7 @@ import { onMounted } from 'vue'
 import { onUnmounted } from 'vue'
 import breadcumb from './cpns/breadcrumb.vue'
 
-const { isCollapse } = storeToRefs(useGlobalStore())
+const { isCollapse, isbreadcumb } = storeToRefs(useGlobalStore())
 
 const check = () => {
   isCollapse.value = !isCollapse.value

@@ -108,3 +108,9 @@
     display: block !important;
   }
 }
+
+body.grayscale {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  transition: filter 0.5s;
+}

@@ -6,10 +6,12 @@ type yoDropdwonItems = {
   disabled?: ComputedRef<boolean> | boolean
   divided?: ComputedRef<boolean> | boolean
   icon?: string
+  i18n?: boolean
 }
 
 type yoDropdwonType = {
   trigger?: 'click' | 'hover'
+  i18n?: boolean
   headerCpn?: ComputedRef<string> | string
   title?: string
   items: yoDropdwonItems[]

@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 10:00:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-15 15:04:31
+ * @LastEditTime: 2023-11-16 15:23:56
  * @FilePath: \yo-vue-admin\src\stores\modules\user.ts
  */
 import { defineStore } from 'pinia'
@@ -21,8 +21,8 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
           name: 'dashboard',
           component: '/dashboard/index',
           meta: {
-            title: '首页',
-            // title: 'layout.sider.dashboard',
+            // title: '首页',
+            title: 'layout.sider.dashboard',
             icon: 'Odometer'
           }
         },
@@ -31,7 +31,7 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
           name: 'test',
           component: '/cs/index',
           meta: {
-            title: '测试',
+            title: 'layout.sider.test',
             icon: 'Sugar'
           }
         },
@@ -39,75 +39,59 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
           path: '/menu',
           name: 'Menu',
           redirect: '/menu/menu1',
-          meta: { icon: 'List', title: '菜单嵌套', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: true },
+          meta: {
+            icon: 'List',
+            title: 'layout.sider.meunnesting',
+            isLink: '',
+            isHide: false,
+            isFull: false,
+            isAffix: false,
+            isKeepAlive: true
+          },
           children: [
             {
               path: '/menu/menu1',
               name: 'Menu1',
               component: '/menu/menu1/index',
-              meta: { icon: 'Menu', title: '菜单1', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: true }
+              meta: {
+                icon: 'Menu',
+                title: 'layout.sider.menu1',
+                isLink: '',
+                isHide: false,
+                isFull: false,
+                isAffix: false,
+                isKeepAlive: true
+              }
             },
             {
               path: '/menu/menu2',
               name: 'Menu2',
               redirect: '/menu/menu2/menu21',
-              meta: { icon: 'Menu', title: '菜单2', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: true },
+              meta: {
+                icon: 'Menu',
+                title: 'layout.sider.menu2',
+                isLink: '',
+                isHide: false,
+                isFull: false,
+                isAffix: false,
+                isKeepAlive: true
+              },
               children: [
                 {
                   path: '/menu/menu2/menu21',
                   name: 'Menu21',
                   component: '/menu/menu2/menu21/index',
-                  meta: { icon: 'Menu', title: '菜单2-1', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: true }
-                },
-                {
-                  path: '/menu/menu2/menu22',
-                  name: 'Menu22',
-                  redirect: '/menu/menu2/menu22/menu221',
-                  meta: { icon: 'Menu', title: '菜单2-2', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: true },
-                  children: [
-                    {
-                      path: '/menu/menu2/menu22/menu221',
-                      name: 'Menu221',
-                      component: '/menu/menu2/menu22/menu221/index',
-                      meta: {
-                        icon: 'Menu',
-                        title: '菜单2-2-1',
-                        isLink: '',
-                        isHide: false,
-                        isFull: false,
-                        isAffix: false,
-                        isKeepAlive: true
-                      }
-                    },
-                    {
-                      path: '/menu/menu2/menu22/menu222',
-                      name: 'Menu222',
-                      component: '/menu/menu2/menu22/menu222/index',
-                      meta: {
-                        icon: 'Menu',
-                        title: '菜单2-2-2',
-                        isLink: '',
-                        isHide: false,
-                        isFull: false,
-                        isAffix: false,
-                        isKeepAlive: true
-                      }
-                    }
-                  ]
-                },
-                {
-                  path: '/menu/menu2/menu23',
-                  name: 'Menu23',
-                  component: '/menu/menu2/menu23/index',
-                  meta: { icon: 'Menu', title: '菜单2-3', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: false }
+                  meta: {
+                    icon: 'Menu',
+                    title: 'layout.sider.menu2-1',
+                    isLink: '',
+                    isHide: false,
+                    isFull: false,
+                    isAffix: false,
+                    isKeepAlive: true
+                  }
                 }
               ]
-            },
-            {
-              path: '/menu/menu3',
-              name: 'Menu3',
-              component: '/menu/menu3/index',
-              meta: { icon: 'Menu', title: '菜单3', isLink: '', isHide: false, isFull: false, isAffix: false, isKeepAlive: true }
             }
           ]
         }
@@ -129,7 +113,7 @@ export const useUserStore = defineStore(
     const authMenuList = ref<menuList[]>([])
 
     // tabs标签
-    const historyTabs = ref<historyTabs[]>([{ path: '/dashboard', title: '首页', noDel: true }])
+    const historyTabs = ref<historyTabs[]>([{ path: '/dashboard', title: 'layout.sider.dashboard', noDel: true }])
 
     // 清除用户信息
     const resetUser = () => {

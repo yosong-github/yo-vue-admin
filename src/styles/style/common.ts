@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 17:26:24
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-15 14:44:30
+ * @LastEditTime: 2023-11-16 11:58:31
  * @FilePath: \yo-vue-admin\src\styles\style\common.ts
  */
 export const commonTheme: {
@@ -25,7 +25,9 @@ export const commonTheme: {
     '--common-border-color': '#dcdfe6',
     '--el-tabs-close-hover-bg-color': 'var(--el-color-danger)',
     // 退出内容全屏按钮
-    '--out-content-full': 'rgba(91, 90, 90, 0.278)'
+    '--out-content-full': 'rgba(91, 90, 90, 0.278)',
+    // 颜色透明
+    '--opt': '0.9'
   },
   // 黑暗
   dark: {
@@ -43,6 +45,8 @@ export const commonTheme: {
     '--common-border-color': '#414243',
     '--el-tabs-close-hover-bg-color': 'var(--el-color-danger-light-3)',
     // 退出内容全屏按钮
-    '--out-content-full': '#c1bfbf'
+    '--out-content-full': '#c1bfbf',
+    // 颜色透明
+    '--opt': '0'
   }
 }

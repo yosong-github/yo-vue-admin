@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-07 14:48:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-14 21:36:55
+ * @LastEditTime: 2023-11-16 15:31:04
  * @FilePath: \yo-vue-admin\src\router\index.ts
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
@@ -50,13 +50,15 @@ router.beforeEach(async (to, from, next) => {
   }
 
   // 7.设置当前路由（用户刷新当前page）
-  currentRouteName.value = to.name as string
+  currentRouteName.value = to.meta.title as string
 
   // 8.添加历史tabs
-  addHistoryTabs({
-    title: to.meta.title as string,
-    path: to.path
-  })
+  if (to.meta.title) {
+    addHistoryTabs({
+      title: to.meta.title as string,
+      path: to.path
+    })
+  }
 
   // 9.正常访问页面
   next()

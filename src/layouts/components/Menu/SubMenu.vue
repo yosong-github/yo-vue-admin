@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 22:38:02
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-13 10:14:37
+ * @LastEditTime: 2023-11-16 15:19:05
  * @FilePath: \yo-vue-admin\src\layouts\components\Menu\SubMenu.vue
 -->
 <template>
@@ -12,8 +12,8 @@
         <el-icon v-if="subItem.meta.icon">
           <component :is="subItem.meta.icon"></component>
         </el-icon>
-        <span class="title">{{ subItem.meta.title }}</span>
-        <!-- <span class="title">{{ $t(subItem.meta.title) }}</span> -->
+        <!-- <span class="title">{{ subItem.meta.title }}</span> -->
+        <span class="title">{{ $t(subItem.meta.title) }}</span>
       </template>
       <SubMenu :menu-list="subItem.children" />
     </el-sub-menu>
@@ -22,8 +22,8 @@
         <component :is="subItem.meta.icon"></component>
       </el-icon>
       <template #title>
-        <span class="title">{{ subItem.meta.title }}</span>
-        <!-- <span class="title">{{ $t(subItem.meta.title) }}</span> -->
+        <!-- <span class="title" v-if="$t(subItem.meta.title)">{{ subItem.meta.title }}</span> -->
+        <span class="title">{{ $t(subItem.meta.title) }}</span>
       </template>
     </el-menu-item>
   </template>
@@ -46,8 +46,17 @@ const handleClickMenu = (subItem: menuListType) => {
 .el-menu-item {
   color: var(--el-menu-text-color);
 }
+@keyframes lighterBackgroundColor {
+  from {
+    background-color: var(--el-menu-active-bg-color);
+  }
+  to {
+    background-color: #fff;
+  }
+}
 .el-menu-item.is-active {
   background-color: var(--el-menu-active-bg-color);
+  animation: lighterBackgroundColor 0s var(--opt) linear forwards;
   color: var(--el-menu-active-text-color);
   position: relative;
   &::after {
