@@ -1,15 +1,8 @@
 <!--
  * @Author: yosong
- * @Date: 2023-11-15 17:03:09
- * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-16 16:01:39
- * @FilePath: \yo-vue-admin\src\components\Dropdown\yoDropdown.vue
--->
-<!--
- * @Author: yosong
  * @Date: 2023-11-13 11:06:49
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-16 15:53:20
+ * @LastEditTime: 2023-11-16 22:06:38
  * @FilePath: \yo-vue-admin\src\components\Dropdown\yoDropdown.vue
 -->
 <template>

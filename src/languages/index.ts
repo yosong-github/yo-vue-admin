@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-08 14:39:50
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-08 15:12:13
+ * @LastEditTime: 2023-11-16 22:17:48
  * @FilePath: \yo-vue-admin\src\languages\index.ts
  */
 import { createI18n } from 'vue-i18n'
@@ -21,5 +21,6 @@ const i18n = createI18n({
     en
   }
 })
+console.log(i18n)
 
 export default i18n

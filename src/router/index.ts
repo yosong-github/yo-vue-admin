@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-07 14:48:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-16 15:31:04
+ * @LastEditTime: 2023-11-16 22:34:30
  * @FilePath: \yo-vue-admin\src\router\index.ts
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
@@ -31,7 +31,7 @@ router.beforeEach(async (to, from, next) => {
 
   // 2.动态设置标题
   const title = import.meta.env.VITE_GLOB_APP_TITLE
-  document.title = to.meta.title ?? title
+  document.title = title
 
   // 3.判断是否登录,已经登陆返回上一级菜单，没有登录清除所有动态路由（用于判断登录后手动返回登录页面不允许的情况）
   if (to.path.toLocaleLowerCase() == import.meta.env.VITE_DEFAULT_LOGIN_PATH) {

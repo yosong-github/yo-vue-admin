@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 10:00:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-16 15:23:56
+ * @LastEditTime: 2023-11-16 22:13:36
  * @FilePath: \yo-vue-admin\src\stores\modules\user.ts
  */
 import { defineStore } from 'pinia'
@@ -113,7 +113,7 @@ export const useUserStore = defineStore(
     const authMenuList = ref<menuList[]>([])
 
     // tabs标签
-    const historyTabs = ref<historyTabs[]>([{ path: '/dashboard', title: 'layout.sider.dashboard', noDel: true }])
+    const historyTabs = ref<historyTabs[]>([])
 
     // 清除用户信息
     const resetUser = () => {
@@ -129,6 +129,14 @@ export const useUserStore = defineStore(
     const getAuthMenuList = async () => {
       const menuList = await getAuthMenuListApi()
       authMenuList.value = menuList
+      // 默认第一项为首页，tabs不可删除
+      if (historyTabs.value.length === 0) {
+        historyTabs.value.unshift({
+          path: authMenuList.value[0]?.redirect || authMenuList.value[0]?.path,
+          title: authMenuList.value[0]?.meta.title,
+          noDel: true
+        })
+      }
     }
 
     // 获取router要添加的路由
