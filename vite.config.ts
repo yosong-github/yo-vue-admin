@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-07 14:48:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-14 19:41:18
+ * @LastEditTime: 2023-11-17 14:35:54
  * @FilePath: \yo-vue-admin\vite.config.ts
  */
 import { fileURLToPath, URL } from 'node:url'
@@ -20,7 +20,8 @@ import postcssPresetEnv from 'postcss-preset-env'
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    port: 3000
   },
   base: './',
   plugins: [

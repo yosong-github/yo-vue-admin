@@ -15,6 +15,7 @@ export default {
       logout: 'logout'
     },
     sider: {
+      home: 'home',
       dashboard: 'dashboard',
       test: 'test',
       meunnesting: 'Menu Nesting',

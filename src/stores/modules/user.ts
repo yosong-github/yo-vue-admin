@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 10:00:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-16 22:13:36
+ * @LastEditTime: 2023-11-17 10:20:23
  * @FilePath: \yo-vue-admin\src\stores\modules\user.ts
  */
 import { defineStore } from 'pinia'
@@ -17,22 +17,13 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
     setTimeout(() => {
       resolve([
         {
-          path: '/dashboard',
-          name: 'dashboard',
-          component: '/dashboard/index',
+          path: '/home',
+          name: 'Home',
+          component: '/home/index',
           meta: {
             // title: '首页',
-            title: 'layout.sider.dashboard',
-            icon: 'Odometer'
-          }
-        },
-        {
-          path: '/test',
-          name: 'test',
-          component: '/cs/index',
-          meta: {
-            title: 'layout.sider.test',
-            icon: 'Sugar'
+            title: 'layout.sider.home',
+            icon: 'IconHome'
           }
         },
         {

@@ -29,9 +29,9 @@ router.beforeEach(async (to, from, next) => {
   // 1.NProgress 开始
   NProgress.start()
 
-  // 2.动态设置标题
-  const title = import.meta.env.VITE_GLOB_APP_TITLE
-  document.title = title
+  // // 2.动态设置标题
+  // const title = import.meta.env.VITE_GLOB_APP_TITLE
+  // document.title = title
 
   // 3.判断是否登录,已经登陆返回上一级菜单，没有登录清除所有动态路由（用于判断登录后手动返回登录页面不允许的情况）
   if (to.path.toLocaleLowerCase() == import.meta.env.VITE_DEFAULT_LOGIN_PATH) {

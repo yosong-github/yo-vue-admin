@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-07 14:48:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-14 21:33:43
+ * @LastEditTime: 2023-11-17 10:12:49
  * @FilePath: \yo-vue-admin\src\App.vue
 -->
 <template>
@@ -20,10 +20,12 @@ import { storeToRefs } from 'pinia'
 import { ElConfigProvider } from 'element-plus'
 import { useTheme } from '@/hooks/useElementStyle'
 
+const route = useRouter()
 // ElementPlus 语言模式
 import en from 'element-plus/es/locale/lang/en'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import { watchEffect } from 'vue'
+import { useRouter } from 'vue-router'
 
 // 初始化主题
 const { initTheme } = useTheme()
@@ -40,6 +42,15 @@ onMounted(() => {
 })
 watchEffect(() => {
   i18n.locale.value = globalConfig.language.value
+
+  // 动态设置标题
+  const title = import.meta.env.VITE_GLOB_APP_TITLE
+  document.title = title
+  let currentTitle
+  if (route.currentRoute.value.meta.title) {
+    currentTitle = i18n.t(route.currentRoute.value.meta.title as string)
+  }
+  document.title = currentTitle ? currentTitle + ' - ' + title : title
 })
 
 // ElementPlus组件语言

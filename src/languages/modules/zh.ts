@@ -15,6 +15,7 @@ export default {
       logout: '退出登录'
     },
     sider: {
+      home: '首页',
       dashboard: '仪表盘',
       test: '测试',
       meunnesting: '菜单嵌套',
