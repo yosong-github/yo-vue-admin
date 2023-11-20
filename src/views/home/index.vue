@@ -106,7 +106,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row style="margin-bottom: 10px">
       <el-col>
         <el-tabs type="border-card">
           <el-tab-pane label="用户">
@@ -116,7 +116,7 @@
       </el-col>
     </el-row>
 
-    <el-row :gutter="10" style="margin-top: 10px">
+    <el-row :gutter="10">
       <el-col :sm="24" :md="8" :lg="8">
         <el-card class="box-card">
           <template #header>

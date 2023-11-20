@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-14 14:20:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-16 15:36:08
+ * @LastEditTime: 2023-11-17 21:50:08
  * @FilePath: \yo-vue-admin\src\layouts\components\Tabs\YoTabs.vue
 -->
 <template>
@@ -165,7 +165,6 @@ const tabsEvn = (type: string) => {
 
 <style lang="scss" scoped>
 .yoTabs {
-  height: 30px;
   border-bottom: 1px solid var(--el-menu-border-color);
   background-color: var(--el-menu-bg-color);
   padding: 0 12px;
@@ -176,6 +175,7 @@ const tabsEvn = (type: string) => {
     font-size: 16px;
   }
   .list {
+    padding: 5px 0;
     display: flex;
     height: 100%;
     flex: 1;

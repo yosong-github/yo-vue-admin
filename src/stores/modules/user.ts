@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 10:00:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-17 10:20:23
+ * @LastEditTime: 2023-11-17 21:57:40
  * @FilePath: \yo-vue-admin\src\stores\modules\user.ts
  */
 import { defineStore } from 'pinia'
@@ -121,7 +121,8 @@ export const useUserStore = defineStore(
       const menuList = await getAuthMenuListApi()
       authMenuList.value = menuList
       // 默认第一项为首页，tabs不可删除
-      if (historyTabs.value.length === 0) {
+      if (historyTabs.value.length === 0 || historyTabs.value[0].path != (authMenuList.value[0]?.redirect || authMenuList.value[0]?.path)) {
+        historyTabs.value = []
         historyTabs.value.unshift({
           path: authMenuList.value[0]?.redirect || authMenuList.value[0]?.path,
           title: authMenuList.value[0]?.meta.title,

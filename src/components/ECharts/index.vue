@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-17 10:55:23
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-17 17:42:13
+ * @LastEditTime: 2023-11-20 23:14:08
  * @FilePath: \yo-vue-admin\src\components\ECharts\index.vue
 -->
 <template>
@@ -20,22 +20,24 @@ import { storeToRefs } from 'pinia'
 
 const { theme, isCollapse, uniaueOpened, isbreadcumb, isbreadcumbIcon, isTabs, isFooter } = storeToRefs(useGlobalStore())
 
-interface Props {
-  option: ECOption
-  renderer?: 'canvas' | 'svg'
-  resize?: boolean
-  width?: number | string | null
-  height?: number | string | null
-  onClick?: (event: ECElementEvent) => any
-}
 // 组件传参与默认值
-const props = withDefaults(defineProps<Props>(), {
-  renderer: 'canvas',
-  resize: true,
-  width: null,
-  height: null,
-  onClick: () => {}
-})
+const props = withDefaults(
+  defineProps<{
+    option: ECOption
+    renderer?: 'canvas' | 'svg'
+    resize?: boolean
+    width?: number | string | null
+    height?: number | string | null
+    onClick?: (event: ECElementEvent) => any
+  }>(),
+  {
+    renderer: 'canvas',
+    resize: true,
+    width: null,
+    height: null,
+    onClick: () => {}
+  }
+)
 // 可接受自定义样式|默认百分比宽高比
 const echartsStyle = computed(() => {
   return props.width || props.height ? { height: props.height + 'px', width: props.width + 'px' } : { height: '100%', width: '100%' }
@@ -64,7 +66,7 @@ const init = () => {
   if (!chartInstance.value) {
     // 将数据不适用响应性
     chartInstance.value = markRaw(
-      echarts.init(myEcharts.value, theme.value, {
+      echarts.init(myEcharts.value, '', {
         renderer: props.renderer
       })
     )
