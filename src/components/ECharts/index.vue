@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-17 10:55:23
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-20 23:14:08
+ * @LastEditTime: 2023-11-21 10:18:17
  * @FilePath: \yo-vue-admin\src\components\ECharts\index.vue
 -->
 <template>

@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-11 18:17:58
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-14 19:28:55
+ * @LastEditTime: 2023-11-21 15:02:39
  * @FilePath: \yo-vue-admin\src\layouts\components\HeaderLeft\index.vue
 -->
 <template>
@@ -19,6 +19,7 @@ import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
 import { onUnmounted } from 'vue'
 import breadcumb from './cpns/breadcrumb.vue'
+import { useDebounceFn } from '@vueuse/core'
 
 const { isCollapse, isbreadcumb } = storeToRefs(useGlobalStore())
 
@@ -34,13 +35,15 @@ const listener = () => {
     isCollapse.value = false
   }
 }
+// 防抖
+const debouncedResize = useDebounceFn(listener, 300, { maxWait: 800 })
 
 onMounted(() => {
-  window.addEventListener('resize', listener)
+  window.addEventListener('resize', debouncedResize)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('resize', listener)
+  window.removeEventListener('resize', debouncedResize)
 })
 </script>
 
