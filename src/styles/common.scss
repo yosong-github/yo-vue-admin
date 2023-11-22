@@ -2,6 +2,11 @@
   height: 100vh;
   width: 100vw;
 }
+
+// 页面内容边距
+.full {
+  padding: 0 !important;
+}
 /* flex */
 .flx-center {
   display: flex;

@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-08 17:10:43
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-16 15:56:48
+ * @LastEditTime: 2023-11-22 11:50:13
  * @FilePath: \yo-vue-admin\src\languages\modules\en.ts
  */
 export default {
@@ -16,7 +16,8 @@ export default {
     },
     sider: {
       home: 'home',
-      dashboard: 'dashboard',
+      dashboard: 'Dashboard',
+      work: 'workbench',
       test: 'test',
       meunnesting: 'Menu Nesting',
       menu1: 'Menu1',

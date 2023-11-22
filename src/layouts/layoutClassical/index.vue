@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 16:25:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-16 14:44:22
+ * @LastEditTime: 2023-11-22 15:04:16
  * @FilePath: \yo-vue-admin\src\layouts\layoutClassical\index.vue
 -->
 <!-- 经典布局 -->
@@ -39,7 +39,7 @@
       </el-header>
       <yo-tabs v-if="isTabs" />
       <yo-full-screen></yo-full-screen>
-      <el-main>
+      <el-main :class="{ full: $route.meta.isNoPadding }">
         <Main></Main>
       </el-main>
       <el-footer v-if="isFooter">Footer</el-footer>

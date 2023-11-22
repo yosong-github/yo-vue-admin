@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 10:00:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-17 21:57:40
+ * @LastEditTime: 2023-11-22 15:07:37
  * @FilePath: \yo-vue-admin\src\stores\modules\user.ts
  */
 import { defineStore } from 'pinia'
@@ -19,12 +19,32 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
         {
           path: '/home',
           name: 'Home',
-          component: '/home/index',
+          redirect: '/home/index',
           meta: {
-            // title: '首页',
-            title: 'layout.sider.home',
-            icon: 'IconHome'
-          }
+            title: 'layout.sider.dashboard',
+            icon: 'IconDashboard'
+          },
+          children: [
+            {
+              path: '/home/index',
+              name: 'HomeIndex',
+              component: '/home/index/index',
+              meta: {
+                icon: 'IconHome',
+                title: 'layout.sider.home'
+              }
+            },
+            {
+              path: '/home/work',
+              name: 'Homework',
+              component: '/home/work/work',
+              meta: {
+                icon: 'IconWork',
+                title: 'layout.sider.work',
+                isNoPadding: true
+              }
+            }
+          ]
         },
         {
           path: '/menu',
@@ -121,11 +141,16 @@ export const useUserStore = defineStore(
       const menuList = await getAuthMenuListApi()
       authMenuList.value = menuList
       // 默认第一项为首页，tabs不可删除
-      if (historyTabs.value.length === 0 || historyTabs.value[0].path != (authMenuList.value[0]?.redirect || authMenuList.value[0]?.path)) {
+      console.log()
+      if (
+        historyTabs.value.length === 0 ||
+        historyTabs.value[0].path != (authMenuList.value[0]?.redirect || authMenuList.value[0]?.path) ||
+        (authMenuList.value[0].redirect && historyTabs.value[0].title != authMenuList.value[0].children![0].meta.title)
+      ) {
         historyTabs.value = []
         historyTabs.value.unshift({
           path: authMenuList.value[0]?.redirect || authMenuList.value[0]?.path,
-          title: authMenuList.value[0]?.meta.title,
+          title: authMenuList.value[0]?.redirect ? authMenuList.value[0].children![0].meta.title : authMenuList.value[0]?.meta.title,
           noDel: true
         })
       }

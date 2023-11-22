@@ -52,7 +52,7 @@
       </el-header>
       <yo-tabs v-if="isTabs" />
       <yo-full-screen></yo-full-screen>
-      <el-main>
+      <el-main :class="{ full: $route.meta.isNoPadding }">
         <Main></Main>
       </el-main>
       <el-footer v-if="isFooter">Footer</el-footer>

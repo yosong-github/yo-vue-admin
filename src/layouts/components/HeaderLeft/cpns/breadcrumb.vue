@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 10:00:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-16 15:19:55
+ * @LastEditTime: 2023-11-22 14:51:59
  * @FilePath: \yo-vue-admin\src\layouts\components\HeaderLeft\cpns\breadcrumb.vue
 -->
 <template>
@@ -51,7 +51,7 @@ const getAllBreadcrumbList = (menuList: menuList[], parent = [], result: { [key:
 watchEffect(() => {
   const allList = getAllBreadcrumbList(authMenuList.value)
   list.value = allList[route.matched[route.matched.length - 1].path]
-  if (route.fullPath != import.meta.env.VITE_DEFAULT_HOPME_PATH) list.value.unshift(...allList[import.meta.env.VITE_DEFAULT_HOPME_PATH])
+  // if (route.fullPath != import.meta.env.VITE_DEFAULT_HOPME_PATH) list.value.unshift(allList[import.meta.env.VITE_DEFAULT_HOPME_PATH][1])
 })
 </script>
 

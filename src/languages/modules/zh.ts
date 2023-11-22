@@ -16,7 +16,8 @@ export default {
     },
     sider: {
       home: '首页',
-      dashboard: '仪表盘',
+      dashboard: 'Dashboard',
+      work: '工作台',
       test: '测试',
       meunnesting: '菜单嵌套',
       menu1: '菜单1',
