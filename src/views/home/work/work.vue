@@ -5,13 +5,6 @@
  * @LastEditTime: 2023-11-23 11:19:24
  * @FilePath: \yo-vue-admin\src\views\home\work\work.vue
 -->
-<!--
- * @Author: yosong
- * @Date: 2023-11-22 11:44:29
- * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-23 11:09:09
- * @FilePath: \yo-vue-admin\src\views\home\work\work.vue
--->
 <template>
   <div class="work">
     <el-row>
