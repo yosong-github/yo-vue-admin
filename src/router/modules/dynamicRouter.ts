@@ -47,7 +47,10 @@ export const initDynamicRouter = async () => {
         if (item.meta.isFull) {
           router.addRoute({ ...item, component } as unknown as RouteRecordRaw)
         } else {
-          router.addRoute('layout', { ...item, component } as unknown as RouteRecordRaw)
+          router.addRoute('layout', {
+            ...item,
+            component
+          } as unknown as RouteRecordRaw)
         }
       }
     })

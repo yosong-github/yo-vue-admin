@@ -6,7 +6,14 @@
  * @FilePath: \yo-vue-admin\src\components\icons\IconRef.vue
 -->
 <template>
-  <svg t="1699929990322" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9510">
+  <svg
+    t="1699929990322"
+    class="icon"
+    viewBox="0 0 1024 1024"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    p-id="9510"
+  >
     <path
       d="M512 960c-211.2 0-384-172.8-384-384s172.8-384 384-384c38.4 0 64 25.6 64 64s-25.6 64-64 64C371.2 320 256 435.2 256 576s115.2 256 256 256 256-115.2 256-256c0-38.4 25.6-64 64-64s64 25.6 64 64c0 211.2-172.8 384-384 384z"
       p-id="9511"

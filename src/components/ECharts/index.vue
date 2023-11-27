@@ -13,12 +13,27 @@
 import { ref } from 'vue'
 import type { EChartsType, ECElementEvent } from 'echarts/core'
 import echarts, { type ECOption } from './config'
-import { computed, watch, onMounted, onBeforeUnmount, nextTick, markRaw } from 'vue'
+import {
+  computed,
+  watch,
+  onMounted,
+  onBeforeUnmount,
+  nextTick,
+  markRaw
+} from 'vue'
 import { useDebounceFn } from '@vueuse/core'
 import { useGlobalStore } from '@/stores/modules/global'
 import { storeToRefs } from 'pinia'
 
-const { theme, isCollapse, uniaueOpened, isbreadcumb, isbreadcumbIcon, isTabs, isFooter } = storeToRefs(useGlobalStore())
+const {
+  theme,
+  isCollapse,
+  uniaueOpened,
+  isbreadcumb,
+  isbreadcumbIcon,
+  isTabs,
+  isFooter
+} = storeToRefs(useGlobalStore())
 
 // 组件传参与默认值
 const props = withDefaults(
@@ -40,7 +55,9 @@ const props = withDefaults(
 )
 // 可接受自定义样式|默认百分比宽高比
 const echartsStyle = computed(() => {
-  return props.width || props.height ? { height: props.height + 'px', width: props.width + 'px' } : { height: '100%', width: '100%' }
+  return props.width || props.height
+    ? { height: props.height + 'px', width: props.width + 'px' }
+    : { height: '100%', width: '100%' }
 })
 
 // 要挂载的dom对象
@@ -71,7 +88,10 @@ const init = () => {
       })
     )
     // 图表点击事件
-    chartInstance.value.on('click', (event: ECElementEvent) => props.onClick && props.onClick(event))
+    chartInstance.value.on(
+      'click',
+      (event: ECElementEvent) => props.onClick && props.onClick(event)
+    )
     draw()
   }
 }
@@ -87,7 +107,15 @@ const debouncedResize = useDebounceFn(resize, 300, { maxWait: 800 })
 
 // 页面布局改变，也需要刷新
 watch(
-  () => [theme.value, isCollapse.value, uniaueOpened.value, isbreadcumb.value, isbreadcumbIcon.value, isTabs.value, isFooter.value],
+  () => [
+    theme.value,
+    isCollapse.value,
+    uniaueOpened.value,
+    isbreadcumb.value,
+    isbreadcumbIcon.value,
+    isTabs.value,
+    isFooter.value
+  ],
   () => {
     debouncedResize()
   },

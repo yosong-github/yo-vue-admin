@@ -7,7 +7,15 @@
  */
 import * as echarts from 'echarts/core'
 // 引入柱状图图表，图表后缀都为 Chart
-import { BarChart, LineChart, LinesChart, PieChart, ScatterChart, RadarChart, GaugeChart } from 'echarts/charts'
+import {
+  BarChart,
+  LineChart,
+  LinesChart,
+  PieChart,
+  ScatterChart,
+  RadarChart,
+  GaugeChart
+} from 'echarts/charts'
 // 动态映入组件
 import {
   TitleComponent,
@@ -34,7 +42,12 @@ import type {
   RadarSeriesOption,
   GaugeSeriesOption
 } from 'echarts/charts'
-import type { TitleComponentOption, TooltipComponentOption, GridComponentOption, DatasetComponentOption } from 'echarts/components'
+import type {
+  TitleComponentOption,
+  TooltipComponentOption,
+  GridComponentOption,
+  DatasetComponentOption
+} from 'echarts/components'
 import type { ComposeOption } from 'echarts/core'
 
 export type ECOption = ComposeOption<

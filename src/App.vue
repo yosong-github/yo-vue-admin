@@ -6,7 +6,11 @@
  * @FilePath: \yo-vue-admin\src\App.vue
 -->
 <template>
-  <el-config-provider :locale="locale" :size="assemblySize" :button="buttonConfig">
+  <el-config-provider
+    :locale="locale"
+    :size="assemblySize"
+    :button="buttonConfig"
+  >
     <router-view></router-view>
   </el-config-provider>
 </template>

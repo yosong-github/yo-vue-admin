@@ -15,7 +15,9 @@ export const useGlobalStore = defineStore(
     // 语言
     const language = ref('en')
     // 按钮大小
-    const assemblySize = ref<'large' | 'default' | 'small'>(import.meta.env.VITE_DEFAULT_SIZE)
+    const assemblySize = ref<'large' | 'default' | 'small'>(
+      import.meta.env.VITE_DEFAULT_SIZE
+    )
     // 主题
     const theme = ref<'light' | 'dark'>('light')
     // 主题色

@@ -5,7 +5,9 @@
         <el-card class="box-card">
           <template #header>
             <div class="card-header">
-              <span>{{ dataOverview[index] ? dataOverview[index].title : 'xxx' }}</span>
+              <span>{{
+                dataOverview[index] ? dataOverview[index].title : 'xxx'
+              }}</span>
               <el-tag class="ml-2" type="success">月</el-tag>
             </div>
           </template>
@@ -13,12 +15,24 @@
             <el-skeleton v-if="!dataOverview[index]" animated>
               <template #template>
                 <div style="display: flex; justify-content: space-between">
-                  <el-skeleton-item variant="p" style="width: 45%; height: 70px" />
-                  <el-skeleton-item variant="p" style="width: 45%; height: 70px" />
+                  <el-skeleton-item
+                    variant="p"
+                    style="width: 45%; height: 70px"
+                  />
+                  <el-skeleton-item
+                    variant="p"
+                    style="width: 45%; height: 70px"
+                  />
                 </div>
                 <div style="display: flex; justify-content: space-between">
-                  <el-skeleton-item variant="p" style="width: 45%; height: 20px; margin-top: 10px" />
-                  <el-skeleton-item variant="p" style="width: 45%; height: 20px; margin-top: 10px" />
+                  <el-skeleton-item
+                    variant="p"
+                    style="width: 45%; height: 20px; margin-top: 10px"
+                  />
+                  <el-skeleton-item
+                    variant="p"
+                    style="width: 45%; height: 20px; margin-top: 10px"
+                  />
                 </div>
               </template>
             </el-skeleton>
@@ -55,10 +69,30 @@ onMounted(() => {
   setTimeout(
     () => {
       dataOverview.value = [
-        { current: '$100.200', cpn: 'IconVisitCount', all: '$2341200.200', title: '访问数' },
-        { current: '$120.200', cpn: 'IconTotalSales', all: '$143200.200', title: '成交额' },
-        { current: '$13420.200', cpn: 'IconDow', all: '$231200.200', title: '下载数' },
-        { current: '$234200.200', cpn: 'IconTransaction', all: '$1223400.200', title: '成交数' }
+        {
+          current: '$100.200',
+          cpn: 'IconVisitCount',
+          all: '$2341200.200',
+          title: '访问数'
+        },
+        {
+          current: '$120.200',
+          cpn: 'IconTotalSales',
+          all: '$143200.200',
+          title: '成交额'
+        },
+        {
+          current: '$13420.200',
+          cpn: 'IconDow',
+          all: '$231200.200',
+          title: '下载数'
+        },
+        {
+          current: '$234200.200',
+          cpn: 'IconTransaction',
+          all: '$1223400.200',
+          title: '成交数'
+        }
       ]
     },
     Math.floor(Math.random() * 2001) + 1000

@@ -26,6 +26,8 @@ declare module 'vue' {
     ElDropdownItem: (typeof import('element-plus/es'))['ElDropdownItem']
     ElDropdownMenu: (typeof import('element-plus/es'))['ElDropdownMenu']
     ElFooter: (typeof import('element-plus/es'))['ElFooter']
+    ElForm: (typeof import('element-plus/es'))['ElForm']
+    ElFormItem: (typeof import('element-plus/es'))['ElFormItem']
     ElHeader: (typeof import('element-plus/es'))['ElHeader']
     ElIcon: (typeof import('element-plus/es'))['ElIcon']
     ElInput: (typeof import('element-plus/es'))['ElInput']
@@ -63,5 +65,6 @@ declare module 'vue' {
     RouterView: (typeof import('vue-router'))['RouterView']
     YoDropdown: (typeof import('./src/components/Dropdown/yoDropdown.vue'))['default']
     YoEditTheme: (typeof import('./src/components/EditTheme/YoEditTheme.vue'))['default']
+    YoForm: (typeof import('./src/components/YoForm/YoForm.vue'))['default']
   }
 }

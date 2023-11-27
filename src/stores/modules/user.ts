@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 10:00:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-22 15:07:37
+ * @LastEditTime: 2023-11-27 10:49:56
  * @FilePath: \yo-vue-admin\src\stores\modules\user.ts
  */
 import { defineStore } from 'pinia'
@@ -105,6 +105,46 @@ const getAuthMenuListApi = (): Promise<menuList[]> => {
               ]
             }
           ]
+        },
+        {
+          path: '/table',
+          name: 'Table',
+          redirect: '/table/basics',
+          meta: {
+            title: 'layout.sider.table',
+            icon: 'Grid'
+          },
+          children: [
+            {
+              path: '/table/basics',
+              name: 'TableBasics',
+              component: '/table/basics/index',
+              meta: {
+                icon: 'Operation',
+                title: 'layout.sider.TableBasics'
+              }
+            }
+          ]
+        },
+        {
+          path: '/form',
+          name: 'Form',
+          redirect: '/form/basics',
+          meta: {
+            title: 'layout.sider.form',
+            icon: 'Memo'
+          },
+          children: [
+            {
+              path: '/form/basics',
+              name: 'FormBasics',
+              component: '/form/basics/index',
+              meta: {
+                icon: 'Tickets',
+                title: 'layout.sider.FormBasics'
+              }
+            }
+          ]
         }
       ])
     }, 500)
@@ -144,13 +184,18 @@ export const useUserStore = defineStore(
       console.log()
       if (
         historyTabs.value.length === 0 ||
-        historyTabs.value[0].path != (authMenuList.value[0]?.redirect || authMenuList.value[0]?.path) ||
-        (authMenuList.value[0].redirect && historyTabs.value[0].title != authMenuList.value[0].children![0].meta.title)
+        historyTabs.value[0].path !=
+          (authMenuList.value[0]?.redirect || authMenuList.value[0]?.path) ||
+        (authMenuList.value[0].redirect &&
+          historyTabs.value[0].title !=
+            authMenuList.value[0].children![0].meta.title)
       ) {
         historyTabs.value = []
         historyTabs.value.unshift({
           path: authMenuList.value[0]?.redirect || authMenuList.value[0]?.path,
-          title: authMenuList.value[0]?.redirect ? authMenuList.value[0].children![0].meta.title : authMenuList.value[0]?.meta.title,
+          title: authMenuList.value[0]?.redirect
+            ? authMenuList.value[0].children![0].meta.title
+            : authMenuList.value[0]?.meta.title,
           noDel: true
         })
       }
@@ -185,21 +230,27 @@ export const useUserStore = defineStore(
     const deleteHistoryTabsL = (path: string) => {
       const index = historyTabs.value.findIndex(it => it.path === path)
       if (index !== -1) {
-        historyTabs.value = historyTabs.value.filter((it, idx) => idx >= index || it.noDel)
+        historyTabs.value = historyTabs.value.filter(
+          (it, idx) => idx >= index || it.noDel
+        )
       }
     }
     // 删除历史右边tabs
     const deleteHistoryTabsR = (path: string) => {
       const index = historyTabs.value.findIndex(it => it.path === path)
       if (index !== -1) {
-        historyTabs.value = historyTabs.value.filter((it, idx) => idx <= index || it.noDel)
+        historyTabs.value = historyTabs.value.filter(
+          (it, idx) => idx <= index || it.noDel
+        )
       }
     }
     // 删除其他tabs
     const deleteOtherTabs = (path: string) => {
       const index = historyTabs.value.findIndex(it => it.path === path)
       if (index !== -1) {
-        historyTabs.value = historyTabs.value.filter(it => it.path === path || it.noDel)
+        historyTabs.value = historyTabs.value.filter(
+          it => it.path === path || it.noDel
+        )
       }
     }
     // 删除所有tabs

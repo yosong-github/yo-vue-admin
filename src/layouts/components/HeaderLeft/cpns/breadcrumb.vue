@@ -39,11 +39,16 @@ const { isbreadcumbIcon } = storeToRefs(useGlobalStore())
 const list = ref<menuList[]>([])
 
 // 获取所有的面包屑
-const getAllBreadcrumbList = (menuList: menuList[], parent = [], result: { [key: string]: any } = {}) => {
+const getAllBreadcrumbList = (
+  menuList: menuList[],
+  parent = [],
+  result: { [key: string]: any } = {}
+) => {
   for (const item of menuList) {
     result[item.path] = [...parent, item]
 
-    if (item.children) getAllBreadcrumbList(item.children, result[item.path], result)
+    if (item.children)
+      getAllBreadcrumbList(item.children, result[item.path], result)
   }
   return result
 }
@@ -61,7 +66,12 @@ watchEffect(() => {
   overflow: hidden;
   white-space: nowrap;
   padding-right: 50px;
-  mask-image: linear-gradient(90deg, #000000 0%, #000000 calc(100% - 50px), transparent);
+  mask-image: linear-gradient(
+    90deg,
+    #000000 0%,
+    #000000 calc(100% - 50px),
+    transparent
+  );
   .el-breadcrumb {
     display: flex;
     div {

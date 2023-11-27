@@ -18,7 +18,11 @@
         <template #dropdown>
           <el-dropdown-menu>
             <template v-for="item in items" :key="item.command">
-              <el-dropdown-item :icon="item.icon" :command="item.command" :disabled="item.disabled" :divided="item.divided"
+              <el-dropdown-item
+                :icon="item.icon"
+                :command="item.command"
+                :disabled="item.disabled"
+                :divided="item.divided"
                 >{{ !item.i18n ? item.title : $t(item.title as string) }}
               </el-dropdown-item>
             </template>
@@ -27,7 +31,11 @@
       </el-dropdown>
     </template>
     <template v-else>
-      <span v-if="!title" class="el-dropdown" @click="emit('handleCommand', '')">
+      <span
+        v-if="!title"
+        class="el-dropdown"
+        @click="emit('handleCommand', '')"
+      >
         <el-icon>
           <component :is="headerCpn"></component>
         </el-icon>

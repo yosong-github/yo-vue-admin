@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-08 17:10:43
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-22 11:50:13
+ * @LastEditTime: 2023-11-27 10:45:11
  * @FilePath: \yo-vue-admin\src\languages\modules\en.ts
  */
 export default {
@@ -23,12 +23,14 @@ export default {
       menu1: 'Menu1',
       menu2: 'Menu2',
       'menu2-1': 'Menu2-1',
-      components: '组件',
-      charts: '图表',
-      nested: '嵌套菜单',
-      table: '表格',
-      form: '表单',
-      i18n: '国际化'
+      components: 'components',
+      charts: 'charts',
+      nested: 'nested',
+      table: 'table',
+      form: 'form',
+      i18n: 'i18n',
+      TableBasics: 'Table Basics',
+      FormBasics: 'Form Basics'
     },
     tabs: {
       full: 'Content area full screen',

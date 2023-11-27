@@ -12,7 +12,9 @@
         <img src="../../../../assets/images/yosong.png" alt="" />
       </el-col>
       <el-col :xs="16" :sm="16" :md="12" :lg="18">
-        <div class="info">{{ getTimeState() }} yosong, 开始你接下来的工作吧!</div>
+        <div class="info">
+          {{ getTimeState() }} yosong, 开始你接下来的工作吧!
+        </div>
       </el-col>
       <el-col :md="24" :lg="4">
         <div class="work">

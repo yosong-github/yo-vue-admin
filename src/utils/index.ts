@@ -78,7 +78,9 @@ export function getTimeState() {
  * @returns {String}
  */
 export function getBrowserLang() {
-  const browserLang = navigator.language ? navigator.language : import.meta.env.VITE_DEFAULT_LANG
+  const browserLang = navigator.language
+    ? navigator.language
+    : import.meta.env.VITE_DEFAULT_LANG
   let defaultBrowserLang = ''
   if (['cn', 'zh', 'zh-cn'].includes(browserLang.toLowerCase())) {
     defaultBrowserLang = 'zh'
@@ -95,7 +97,10 @@ export function getBrowserLang() {
  */
 export function getFlatMenuList(menuList: menuList[]): menuList[] {
   const newMenuList: menuList[] = JSON.parse(JSON.stringify(menuList))
-  return newMenuList.flatMap(item => [item, ...(item.children ? getFlatMenuList(item.children) : [])])
+  return newMenuList.flatMap(item => [
+    item,
+    ...(item.children ? getFlatMenuList(item.children) : [])
+  ])
 }
 
 /**

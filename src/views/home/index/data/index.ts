@@ -181,7 +181,11 @@ export const option4_data: ECOption = {
       color: '#00ffff'
     },
     data: [
-      { value: 10, name: '金', itemStyle: { borderWidth: 10, color: 'rgba(51, 67, 190, 1)' } },
+      {
+        value: 10,
+        name: '金',
+        itemStyle: { borderWidth: 10, color: 'rgba(51, 67, 190, 1)' }
+      },
       {
         value: 1,
         name: '',
@@ -191,7 +195,11 @@ export const option4_data: ECOption = {
           borderWidth: 0
         }
       },
-      { value: 15, name: '木', itemStyle: { borderWidth: 10, color: 'rgba(129, 213, 250, 1)' } },
+      {
+        value: 15,
+        name: '木',
+        itemStyle: { borderWidth: 10, color: 'rgba(129, 213, 250, 1)' }
+      },
       {
         value: 1,
         name: '',
@@ -201,7 +209,11 @@ export const option4_data: ECOption = {
           borderWidth: 0
         }
       },
-      { value: 50, name: '水', itemStyle: { borderWidth: 10, color: 'rgba(56, 164, 252, 1)' } },
+      {
+        value: 50,
+        name: '水',
+        itemStyle: { borderWidth: 10, color: 'rgba(56, 164, 252, 1)' }
+      },
       {
         value: 1,
         name: '',
@@ -211,7 +223,11 @@ export const option4_data: ECOption = {
           borderWidth: 0
         }
       },
-      { value: 46, name: '火', itemStyle: { borderWidth: 10, color: 'rgba(46, 201, 163, 1)' } },
+      {
+        value: 46,
+        name: '火',
+        itemStyle: { borderWidth: 10, color: 'rgba(46, 201, 163, 1)' }
+      },
       {
         value: 1,
         name: '',
@@ -221,7 +237,11 @@ export const option4_data: ECOption = {
           borderWidth: 0
         }
       },
-      { value: 10, name: '土', itemStyle: { borderWidth: 10, color: 'rgba(72, 203, 82, 1)' } },
+      {
+        value: 10,
+        name: '土',
+        itemStyle: { borderWidth: 10, color: 'rgba(72, 203, 82, 1)' }
+      },
       {
         value: 1,
         name: '',
@@ -231,7 +251,11 @@ export const option4_data: ECOption = {
           borderWidth: 0
         }
       },
-      { value: 10, name: '德', itemStyle: { borderWidth: 10, color: 'rgba(208,210,202,1)' } },
+      {
+        value: 10,
+        name: '德',
+        itemStyle: { borderWidth: 10, color: 'rgba(208,210,202,1)' }
+      },
       {
         value: 1,
         name: '',

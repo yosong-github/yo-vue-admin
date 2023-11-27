@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-08 17:10:43
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-16 15:56:39
+ * @LastEditTime: 2023-11-27 10:50:57
  * @FilePath: \yo-vue-admin\src\languages\modules\zh.ts
  */
 export default {
@@ -28,7 +28,9 @@ export default {
       nested: '嵌套菜单',
       table: '表格',
       form: '表单',
-      i18n: '国际化'
+      i18n: '国际化',
+      TableBasics: '基础表格',
+      FormBasics: '基础表单'
     },
     tabs: {
       full: '内容区域全屏',

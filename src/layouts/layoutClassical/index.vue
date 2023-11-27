@@ -14,19 +14,32 @@
         <span v-show="!isCollapse" class="logo-text">yo-admin</span>
       </div>
       <el-scrollbar>
-        <el-menu :router="false" :default-active="$route.path" :collapse="isCollapse" :unique-opened="uniaueOpened">
+        <el-menu
+          :router="false"
+          :default-active="$route.path"
+          :collapse="isCollapse"
+          :unique-opened="uniaueOpened"
+        >
           <SubMenu :menu-list="menuList" />
         </el-menu>
       </el-scrollbar>
     </el-aside>
-    <div class="minAside" :style="{ left: isCollapse ? '-100vw' : '0px' }" @click.stop="isCollapse = !isCollapse">
+    <div
+      class="minAside"
+      :style="{ left: isCollapse ? '-100vw' : '0px' }"
+      @click.stop="isCollapse = !isCollapse"
+    >
       <el-aside :width="'200px'" @click.stop="() => {}">
         <div class="logo flx-center">
           <img src="@/assets/images/logo.svg" alt="logo" />
           <span class="logo-text">yo-admin</span>
         </div>
         <el-scrollbar>
-          <el-menu :router="false" :default-active="$route.path" :unique-opened="uniaueOpened">
+          <el-menu
+            :router="false"
+            :default-active="$route.path"
+            :unique-opened="uniaueOpened"
+          >
             <SubMenu :menu-list="menuList" />
           </el-menu>
         </el-scrollbar>
@@ -60,7 +73,9 @@ import YoFullScreen from '../components/FullScreen/YoFullScreen.vue'
 import YoTabs from '../components/Tabs/YoTabs.vue'
 
 const { getMenuList } = useUserStore()
-const { isCollapse, uniaueOpened, isTabs, isFooter } = storeToRefs(useGlobalStore())
+const { isCollapse, uniaueOpened, isTabs, isFooter } = storeToRefs(
+  useGlobalStore()
+)
 
 const menuList = computed(() => getMenuList())
 </script>

@@ -8,9 +8,15 @@
       <el-scrollbar>
         <div class="menuOut">
           <template v-for="it in menuList" :key="it.path">
-            <div class="item" :class="{ active: it.meta.title == activeMenu?.meta.title }" @click="handleClick(it)">
+            <div
+              class="item"
+              :class="{ active: it.meta.title == activeMenu?.meta.title }"
+              @click="handleClick(it)"
+            >
               <component :is="it.meta.icon"></component>
-              <span class="sle" style="width: 80%; text-align: center">{{ $t(it.meta.title) }}</span>
+              <span class="sle" style="width: 80%; text-align: center">{{
+                $t(it.meta.title)
+              }}</span>
             </div>
           </template>
         </div>
@@ -18,27 +24,44 @@
     </el-aside>
     <el-aside
       class="aside"
-      :style="{ width: subMenList.length <= 0 ? '0' : isCollapse ? '64px' : '200px' }"
+      :style="{
+        width: subMenList.length <= 0 ? '0' : isCollapse ? '64px' : '200px'
+      }"
       :width="isCollapse ? '64px' : '200px'"
     >
       <div class="logo">
-        <span style="text-align: center; width: 100%">{{ isCollapse ? 'Y' : 'yo-admin' }}</span>
+        <span style="text-align: center; width: 100%">{{
+          isCollapse ? 'Y' : 'yo-admin'
+        }}</span>
       </div>
       <el-scrollbar>
-        <el-menu :router="false" :default-active="$route.path" :collapse="isCollapse" :unique-opened="uniaueOpened">
+        <el-menu
+          :router="false"
+          :default-active="$route.path"
+          :collapse="isCollapse"
+          :unique-opened="uniaueOpened"
+        >
           <SubMenu :menu-list="subMenList" />
         </el-menu>
       </el-scrollbar>
     </el-aside>
 
-    <div class="minAside" :style="{ left: isCollapse ? '-100vw' : '0px' }" @click.stop="isCollapse = !isCollapse">
+    <div
+      class="minAside"
+      :style="{ left: isCollapse ? '-100vw' : '0px' }"
+      @click.stop="isCollapse = !isCollapse"
+    >
       <el-aside :width="'200px'" @click.stop="() => {}">
         <div class="logo flx-center">
           <img src="@/assets/images/logo.svg" alt="logo" />
           <span class="logo-text">yo-admin</span>
         </div>
         <el-scrollbar>
-          <el-menu :router="false" :default-active="$route.path" :unique-opened="uniaueOpened">
+          <el-menu
+            :router="false"
+            :default-active="$route.path"
+            :unique-opened="uniaueOpened"
+          >
             <SubMenu :menu-list="menuList" />
           </el-menu>
         </el-scrollbar>
@@ -78,7 +101,9 @@ import { watchEffect } from 'vue'
 import router from '@/router'
 
 const { getMenuList } = useUserStore()
-const { isCollapse, uniaueOpened, isTabs, isFooter } = storeToRefs(useGlobalStore())
+const { isCollapse, uniaueOpened, isTabs, isFooter } = storeToRefs(
+  useGlobalStore()
+)
 
 const route = useRoute()
 
@@ -93,7 +118,9 @@ const handleClick = (it: menuListType) => {
 
 watchEffect(() => {
   const menuItem = menuList.value.filter(item => {
-    return route.path === item.path || `/${route.path.split('/')[1]}` === item.path
+    return (
+      route.path === item.path || `/${route.path.split('/')[1]}` === item.path
+    )
   })
   activeMenu.value = menuItem[0]
   if (menuItem[0].children) {

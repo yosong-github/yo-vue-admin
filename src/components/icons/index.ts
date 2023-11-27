@@ -13,6 +13,9 @@ import { defineAsyncComponent, type AsyncComponentLoader, type App } from 'vue'
 const customIcons = import.meta.glob('@/components/icons/**/*.vue')
 export const install = (app: App) => {
   for (const [key, component] of Object.entries(customIcons)) {
-    app.component(key.match(/[^\/]+(?=\.vue)/)![0], defineAsyncComponent(component as AsyncComponentLoader))
+    app.component(
+      key.match(/[^\/]+(?=\.vue)/)![0],
+      defineAsyncComponent(component as AsyncComponentLoader)
+    )
   }
 }

@@ -12,7 +12,13 @@
     <el-button @click="changeSize">切换按钮大小</el-button>
     <el-button @click="go">去仪表盘</el-button>
     <el-date-picker v-model="value1" type="date" placeholder="Pick a day" />
-    <el-time-picker v-model="value2" is-range range-separator="To" start-placeholder="Start time" end-placeholder="End time" />
+    <el-time-picker
+      v-model="value2"
+      is-range
+      range-separator="To"
+      start-placeholder="Start time"
+      end-placeholder="End time"
+    />
     <el-date-picker
       v-model="value2"
       type="datetimerange"
@@ -33,7 +39,10 @@ import { useGlobalStore } from '@/stores/modules/global'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 
-const value2 = ref<[Date, Date]>([new Date(2016, 9, 10, 8, 40), new Date(2016, 9, 10, 9, 40)])
+const value2 = ref<[Date, Date]>([
+  new Date(2016, 9, 10, 8, 40),
+  new Date(2016, 9, 10, 9, 40)
+])
 
 const router = useRouter()
 
@@ -49,7 +58,9 @@ const value1 = ref(new Date())
 const changeLanguage = () => {
   console.log('changeLanguage')
 
-  globalConfig.language.value == 'en' ? (globalConfig.language.value = 'zh') : (globalConfig.language.value = 'en')
+  globalConfig.language.value == 'en'
+    ? (globalConfig.language.value = 'zh')
+    : (globalConfig.language.value = 'en')
 }
 const changeSize = () => {
   console.log('changeSize')

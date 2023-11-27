@@ -41,7 +41,11 @@ router.beforeEach(async (to, from, next) => {
   }
 
   // 4.判断是否有 Token，没有重定向到 login 页面
-  if (!userInfo.value.token) return next({ path: import.meta.env.VITE_DEFAULT_LOGIN_PATH, replace: true })
+  if (!userInfo.value.token)
+    return next({
+      path: import.meta.env.VITE_DEFAULT_LOGIN_PATH,
+      replace: true
+    })
 
   // 6.如果没有菜单列表，就重新请求菜单列表并添加动态路由
   if (!authMenuList.value.length) {

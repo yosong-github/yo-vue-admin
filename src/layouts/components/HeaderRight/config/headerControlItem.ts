@@ -20,7 +20,14 @@ interface headerControlItemType extends yoDropdwonType {
 // 全局配置
 const { changeLanguage, setTheme } = useGlobalStore()
 // 语言
-const { language, assemblySize, theme, currentRouteName, refresh, editThemeState } = storeToRefs(useGlobalStore())
+const {
+  language,
+  assemblySize,
+  theme,
+  currentRouteName,
+  refresh,
+  editThemeState
+} = storeToRefs(useGlobalStore())
 // 刷新缓存
 const { removeCacheEntry } = useRouteCache()
 
@@ -92,8 +99,16 @@ export const headerItem = ref<headerControlItemType[]>([
       changeLanguage(language)
     },
     items: [
-      { command: 'zh', title: '中文', disabled: computed(() => language.value == 'zh') },
-      { command: 'en', title: 'English', disabled: computed(() => language.value == 'en') }
+      {
+        command: 'zh',
+        title: '中文',
+        disabled: computed(() => language.value == 'zh')
+      },
+      {
+        command: 'en',
+        title: 'English',
+        disabled: computed(() => language.value == 'en')
+      }
     ]
   },
   {
@@ -110,7 +125,10 @@ export const headerItem = ref<headerControlItemType[]>([
     },
     i18n: true,
     bindObj: {
-      url: import.meta.env.MODE == 'development' ? '../../src/assets/images/yosong.png' : './assets/yosong.png'
+      url:
+        import.meta.env.MODE == 'development'
+          ? '../../src/assets/images/yosong.png'
+          : './assets/yosong.png'
     },
     items: [
       { command: 'yosong', title: 'yosong' },

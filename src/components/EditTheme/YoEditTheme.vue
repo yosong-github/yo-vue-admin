@@ -7,17 +7,29 @@
 -->
 <template>
   <div class="yoEditTheme">
-    <el-drawer v-model="editThemeState" :size="300" :title="$t('layout.edit.Page_configuration')">
+    <el-drawer
+      v-model="editThemeState"
+      :size="300"
+      :title="$t('layout.edit.Page_configuration')"
+    >
       <el-divider>
         <el-icon><star-filled /></el-icon>
         {{ $t('layout.edit.Layout_style') }}
       </el-divider>
       <div class="layoutList">
-        <div class="item" :class="{ active: layoutType == 'classical' }" @click="layoutType = 'classical'">
+        <div
+          class="item"
+          :class="{ active: layoutType == 'classical' }"
+          @click="layoutType = 'classical'"
+        >
           <IconClassicallayout />
           <span>{{ $t('layout.edit.Classical_layout') }}</span>
         </div>
-        <div class="item" :class="{ active: layoutType == 'colum' }" @click="layoutType = 'colum'">
+        <div
+          class="item"
+          :class="{ active: layoutType == 'colum' }"
+          @click="layoutType = 'colum'"
+        >
           <IconColumnarlayout />
           <span>{{ $t('layout.edit.Columnar_layout') }}</span>
         </div>
@@ -47,7 +59,12 @@
         </div>
         <div class="itme">
           <span>{{ $t('layout.edit.Grey_pattern') }}</span>
-          <el-switch v-model="grayscale" class="mt-2" style="margin-left: 24px" inline-prompt />
+          <el-switch
+            v-model="grayscale"
+            class="mt-2"
+            style="margin-left: 24px"
+            inline-prompt
+          />
         </div>
       </div>
 
@@ -58,27 +75,57 @@
       <div class="colorEdit">
         <div class="itme">
           <span>{{ $t('layout.edit.Menu_folding') }}</span>
-          <el-switch v-model="isCollapse" class="mt-2" style="margin-left: 24px" inline-prompt />
+          <el-switch
+            v-model="isCollapse"
+            class="mt-2"
+            style="margin-left: 24px"
+            inline-prompt
+          />
         </div>
         <div class="itme">
           <span>{{ $t('layout.edit.Accordion_menu') }}</span>
-          <el-switch v-model="uniaueOpened" class="mt-2" style="margin-left: 24px" inline-prompt />
+          <el-switch
+            v-model="uniaueOpened"
+            class="mt-2"
+            style="margin-left: 24px"
+            inline-prompt
+          />
         </div>
         <div class="itme">
           <span>{{ $t('layout.edit.Show_crumbs') }}</span>
-          <el-switch v-model="isbreadcumb" class="mt-2" style="margin-left: 24px" inline-prompt />
+          <el-switch
+            v-model="isbreadcumb"
+            class="mt-2"
+            style="margin-left: 24px"
+            inline-prompt
+          />
         </div>
         <div class="itme">
           <span>{{ $t('layout.edit.The_breadcrumb_icon_is_displayed') }}</span>
-          <el-switch v-model="isbreadcumbIcon" class="mt-2" style="margin-left: 24px" inline-prompt />
+          <el-switch
+            v-model="isbreadcumbIcon"
+            class="mt-2"
+            style="margin-left: 24px"
+            inline-prompt
+          />
         </div>
         <div class="itme">
           <span>{{ $t('layout.edit.Display_label') }}</span>
-          <el-switch v-model="isTabs" class="mt-2" style="margin-left: 24px" inline-prompt />
+          <el-switch
+            v-model="isTabs"
+            class="mt-2"
+            style="margin-left: 24px"
+            inline-prompt
+          />
         </div>
         <div class="itme">
           <span>{{ $t('layout.edit.Show_footer') }}</span>
-          <el-switch v-model="isFooter" class="mt-2" style="margin-left: 24px" inline-prompt />
+          <el-switch
+            v-model="isFooter"
+            class="mt-2"
+            style="margin-left: 24px"
+            inline-prompt
+          />
         </div>
       </div>
     </el-drawer>

@@ -119,3 +119,7 @@ body.grayscale {
   -webkit-filter: grayscale(100%);
   transition: filter 0.5s;
 }
+
+.w50 {
+  width: 300px !important;
+}
