@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-27 15:42:53
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-27 17:04:56
+ * @LastEditTime: 2023-11-27 17:45:49
  * @FilePath: \yo-vue-admin\src\views\form\basics\config.ts
  */
 import type { FormItem } from '@/components/YoForm/type'

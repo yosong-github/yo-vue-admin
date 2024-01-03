@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 11:35:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-24 15:04:07
+ * @LastEditTime: 2024-01-03 14:08:20
  * @FilePath: \yo-vue-admin\src\views\home\index\index.vue
 -->
 <template>
@@ -67,12 +67,15 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="tsx">
 import ECharts from '@/components/ECharts/index.vue'
 import type { ECOption } from '@/components/ECharts/config'
 import { ref, onMounted, type Ref } from 'vue'
 import dataOverview from './cpns/dataOverview.vue'
 import { option_data, option2_data, option3_data, option4_data } from './data'
+
+// import { ElMessageBox, ElForm, ElFormItem, ElInput } from 'element-plus'
+
 // import type { ECElementEvent } from 'echarts/core'
 
 const option: Ref<ECOption | null> = ref(null)
@@ -81,6 +84,11 @@ const option3: Ref<ECOption | null> = ref(null)
 const option4: Ref<ECOption | null> = ref(null)
 
 onMounted(() => {
+  // ElMessageBox({
+  //   type: 'info',
+  //   // message: h('div', { class: 'home' }, '？？？？')
+  //   message: () => <div>你好阿</div>
+  // })
   setTimeout(
     () => {
       option.value = option_data
