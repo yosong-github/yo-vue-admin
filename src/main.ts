@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-13 10:00:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-27 17:23:55
+ * @LastEditTime: 2024-01-03 14:19:54
  * @FilePath: \yo-vue-admin\src\main.ts
  */
 import { createApp } from 'vue'
