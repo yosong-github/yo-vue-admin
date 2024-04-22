@@ -1,8 +1,8 @@
 <!--
  * @Author: yosong
  * @Date: 2023-11-07 14:48:15
- * @LastEditors: Do not edit
- * @LastEditTime: 2023-12-11 11:29:57
+ * @LastEditors: yosong 2404559603@qq.com
+ * @LastEditTime: 2024-04-12 11:20:26
  * @FilePath: \yo-vue-admin\src\App.vue
 -->
 <template>
@@ -23,7 +23,16 @@ import { getBrowserLang } from '@/utils/index'
 import { storeToRefs } from 'pinia'
 import { ElConfigProvider } from 'element-plus'
 import { useTheme } from '@/hooks/useElementStyle'
-import { ECB } from '@/utils/aes'
+
+import { userAge } from '@/utils/test'
+import { onUserInfo } from '@/utils/test2'
+
+console.log(userAge, 'userAge')
+
+userAge.value++
+
+const userage = onUserInfo()
+console.log(userage, 'userage')
 
 const route = useRouter()
 // ElementPlus 语言模式
@@ -44,15 +53,6 @@ const i18n = useI18n()
 onMounted(() => {
   const language = globalConfig.language.value ?? getBrowserLang()
   globalConfig.language.value = language
-  console.log('1111111111111111111')
-
-  console.log(
-    ECB.encrypt(
-      'test',
-      '00000011635234675401',
-      '002cbfce524b4521a315c80c4de72d58'
-    )
-  )
 })
 watchEffect(() => {
   i18n.locale.value = globalConfig.language.value

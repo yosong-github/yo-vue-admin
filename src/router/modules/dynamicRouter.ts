@@ -2,7 +2,7 @@
  * @Author: yosong
  * @Date: 2023-11-10 11:02:17
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-11-13 14:37:32
+ * @LastEditTime: 2024-03-25 11:43:02
  * @FilePath: \yo-vue-admin\src\router\modules\dynamicRouter.ts
  */
 import router from '..'
@@ -13,7 +13,7 @@ import { useUserStore } from '@/stores/modules/user'
 import useRouteCache from '@/hooks/useRouteCache'
 
 // 引入 views 文件夹下所有 vue 文件
-const modules = import.meta.glob('@/views/**/*.vue')
+const modules = import.meta.glob('../../views/**/*.vue')
 
 /**
  * @description 初始化动态路由
@@ -43,7 +43,8 @@ export const initDynamicRouter = async () => {
         if (item.meta.isKeepAlive) {
           addCache(item.name)
         }
-        const component = modules['/src/views' + item.component + '.vue']
+        const component = modules['../../views' + item.component + '.vue']
+
         if (item.meta.isFull) {
           router.addRoute({ ...item, component } as unknown as RouteRecordRaw)
         } else {

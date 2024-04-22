@@ -1,8 +1,8 @@
 <!--
  * @Author: yosong
  * @Date: 2023-11-10 11:35:46
- * @LastEditors: Do not edit
- * @LastEditTime: 2024-01-03 14:08:20
+ * @LastEditors: yosong 2404559603@qq.com
+ * @LastEditTime: 2024-04-12 11:35:50
  * @FilePath: \yo-vue-admin\src\views\home\index\index.vue
 -->
 <template>
@@ -73,6 +73,15 @@ import type { ECOption } from '@/components/ECharts/config'
 import { ref, onMounted, type Ref } from 'vue'
 import dataOverview from './cpns/dataOverview.vue'
 import { option_data, option2_data, option3_data, option4_data } from './data'
+
+import { userAge } from '@/utils/test'
+import { onUserInfo } from '@/utils/test2'
+
+console.log(userAge, 'userAge')
+userAge.value++
+
+const userage = onUserInfo()
+console.log(userage, 'userage')
 
 // import { ElMessageBox, ElForm, ElFormItem, ElInput } from 'element-plus'
 

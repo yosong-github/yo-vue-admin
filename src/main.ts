@@ -1,8 +1,8 @@
 /*
  * @Author: yosong
  * @Date: 2023-11-13 10:00:26
- * @LastEditors: Do not edit
- * @LastEditTime: 2024-01-03 14:19:54
+ * @LastEditors: yosong 2404559603@qq.com
+ * @LastEditTime: 2024-04-22 11:46:54
  * @FilePath: \yo-vue-admin\src\main.ts
  */
 import { createApp } from 'vue'

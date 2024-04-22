@@ -10,7 +10,9 @@ import { defineAsyncComponent, type AsyncComponentLoader, type App } from 'vue'
  * 快速注册自定义图标
  * @param app
  */
-const customIcons = import.meta.glob('@/components/icons/**/*.vue')
+// const customIcons = import.meta.glob('@/components/icons/**/*.vue')
+const customIcons = import.meta.glob('./*.vue')
+
 export const install = (app: App) => {
   for (const [key, component] of Object.entries(customIcons)) {
     app.component(
