@@ -23,7 +23,6 @@ import { getBrowserLang } from '@/utils/index'
 import { storeToRefs } from 'pinia'
 import { ElConfigProvider } from 'element-plus'
 import { useTheme } from '@/hooks/useElementStyle'
-import { ECB } from '@/utils/aes'
 
 const route = useRouter()
 // ElementPlus 语言模式
@@ -46,13 +45,6 @@ onMounted(() => {
   globalConfig.language.value = language
   console.log('1111111111111111111')
 
-  console.log(
-    ECB.encrypt(
-      'test',
-      '00000011635234675401',
-      '002cbfce524b4521a315c80c4de72d58'
-    )
-  )
 })
 watchEffect(() => {
   i18n.locale.value = globalConfig.language.value
