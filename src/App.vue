@@ -53,6 +53,7 @@ const i18n = useI18n()
 onMounted(() => {
   const language = globalConfig.language.value ?? getBrowserLang()
   globalConfig.language.value = language
+  console.log('1111111111111111111')
 })
 watchEffect(() => {
   i18n.locale.value = globalConfig.language.value
